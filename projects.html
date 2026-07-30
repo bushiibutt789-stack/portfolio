@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="site-nav__brand" href="index.html">Your Name<span>.</span></a>
+      <ul class="site-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" style="padding-bottom:32px;">
+      <p class="hero__eyebrow">Projects</p>
+      <h1 style="font-size:clamp(2rem,5vw,3rem);">Field notes</h1>
+      <p class="hero__lede">
+        Each entry below is a real piece of AI fluency work. Click a thumbnail to see it
+        larger. Replace the placeholder images and text with your own screenshots and
+        write-ups as you build.
+      </p>
+    </section>
+
+    <section class="section wrap">
+      <div class="gallery">
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project1.svg" data-caption="Prompt Design — replace with your project screenshot">
+            <img src="images/project1.svg" alt="Placeholder thumbnail for a prompt design project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 01</p>
+            <h3>Project title one</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Prompting</span><span class="tag">Writing</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project2.svg" data-caption="Workflow Automation — replace with your project screenshot">
+            <img src="images/project2.svg" alt="Placeholder thumbnail for a workflow automation project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 02</p>
+            <h3>Project title two</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Automation</span><span class="tag">Tools</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project3.svg" data-caption="AI Research Sprint — replace with your project screenshot">
+            <img src="images/project3.svg" alt="Placeholder thumbnail for an AI research sprint project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 03</p>
+            <h3>Project title three</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Research</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project4.svg" data-caption="Content Pipeline — replace with your project screenshot">
+            <img src="images/project4.svg" alt="Placeholder thumbnail for a content pipeline project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 04</p>
+            <h3>Project title four</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Content</span><span class="tag">Editing</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project5.svg" data-caption="Data + AI Analysis — replace with your project screenshot">
+            <img src="images/project5.svg" alt="Placeholder thumbnail for a data and AI analysis project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 05</p>
+            <h3>Project title five</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Data</span><span class="tag">Analysis</span></div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="entry__thumb" data-lightbox-trigger data-full="images/project6.svg" data-caption="Agent Experiment — replace with your project screenshot">
+            <img src="images/project6.svg" alt="Placeholder thumbnail for an AI agent experiment project">
+          </div>
+          <div class="entry__body">
+            <p class="entry__index">FN / 06</p>
+            <h3>Project title six</h3>
+            <p>What the project was, which AI tool you used, and one thing you learned.</p>
+            <div class="entry__tags"><span class="tag">Agents</span><span class="tag">Experiment</span></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox: one hidden overlay, reused for every image (see js/gallery.js) -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Enlarged project image">
+    <button class="lightbox__close" id="lightbox-close" aria-label="Close image">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <p class="lightbox__caption" id="lightbox-caption"></p>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Your Name</span>
+      <span>Built by hand with HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <script src="js/gallery.js"></script>
+</body>
+</html>

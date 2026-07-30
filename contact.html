@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Your Name</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="site-nav">
+      <a class="site-nav__brand" href="index.html">Your Name<span>.</span></a>
+      <ul class="site-nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" style="padding-bottom:32px;">
+      <p class="hero__eyebrow">Contact</p>
+      <h1 style="font-size:clamp(2rem,5vw,3rem);">Say hello</h1>
+      <p class="hero__lede">
+        The form below sends straight to my inbox — no page reload, no backend server.
+        You can also reach me directly at
+        <a href="mailto:you@example.com">you@example.com</a>.
+      </p>
+    </section>
+
+    <section class="section wrap">
+      <!--
+        HOW THIS FORM WORKS (read this before you deploy):
+        1. Go to https://formspree.io and create a free account.
+        2. Create a new form there — it gives you an endpoint URL like
+           https://formspree.io/f/abcd1234
+        3. Replace YOUR_FORMSPREE_ID below with that ID.
+        That's it — Formspree receives the submission and emails it to you.
+        No backend code, no server, no database.
+      -->
+      <form
+        id="contact-form"
+        class="contact-form"
+        action="https://formspree.io/f/YOUR_FORMSPREE_ID"
+        method="POST"
+      >
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="field">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+
+        <!-- honeypot field: invisible to humans, catches simple spam bots -->
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
+        <button type="submit" class="btn btn--primary" style="align-self:flex-start;">
+          Send message
+        </button>
+
+        <p class="contact-form__note">
+          I'll usually reply within a few days.
+        </p>
+
+        <p class="form-status" id="form-status" role="status"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Your Name</span>
+      <span>Built by hand with HTML, CSS &amp; JS</span>
+    </div>
+  </footer>
+
+  <script src="js/contact.js"></script>
+</body>
+</html>
