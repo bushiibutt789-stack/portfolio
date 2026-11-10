@@ -1,0 +1,110 @@
+Put these 108 files in this images/ folder (any missing one shows placeholder.jpg):
+
+images/peshawari-1.jpg  <-  Classic Brown Kaptaan Chappal
+images/peshawari-2.jpg  <-  Black Double Sole Peshawari
+images/peshawari-3.jpg  <-  Tan Hand-Stitched Chappal
+images/peshawari-4.jpg  <-  Royal Maroon Norozi Chappal
+images/peshawari-5.jpg  <-  Charcoal Grey Kaptaan Chappal
+images/peshawari-6.jpg  <-  Chocolate Brown Charsadda Chappal
+images/peshawari-7.jpg  <-  Camel Tan Peshawari Chappal
+images/peshawari-8.jpg  <-  Black Norozi Double Sole
+images/peshawari-9.jpg  <-  Antique Brown Kohati Chappal
+images/peshawari-10.jpg  <-  Oxblood Red Kaptaan Chappal
+images/peshawari-11.jpg  <-  Sand Beige Summer Peshawari
+images/peshawari-12.jpg  <-  Mustard Tan Hand-Cut Chappal
+images/peshawari-13.jpg  <-  Jet Black Tyre Sole Peshawari
+images/peshawari-14.jpg  <-  Dark Walnut Waziri Chappal
+images/peshawari-15.jpg  <-  Premium Cowhide Peshawari
+images/peshawari-16.jpg  <-  Olive Brown Mardana Chappal
+images/peshawari-17.jpg  <-  Black Gold-Stitch Peshawari
+images/peshawari-18.jpg  <-  Royal Tan Norozi Deluxe
+images/khussa-1.jpg  <-  Classic Brown Multani Khussa
+images/khussa-2.jpg  <-  Black Zari Work Khussa
+images/khussa-3.jpg  <-  Camel Tan Plain Khussa
+images/khussa-4.jpg  <-  Navy Blue Embroidered Khussa
+images/khussa-5.jpg  <-  Maroon Velvet Khussa
+images/khussa-6.jpg  <-  Golden Zari Groom Khussa
+images/khussa-7.jpg  <-  Cream Pearl Stitch Khussa
+images/khussa-8.jpg  <-  Chocolate Brown Pointed Toe Khussa
+images/khussa-9.jpg  <-  Black Plain Formal Khussa
+images/khussa-10.jpg  <-  Bottle Green Embroidered Khussa
+images/khussa-11.jpg  <-  Tan Mirror Work Khussa
+images/khussa-12.jpg  <-  Royal Blue Zari Khussa
+images/khussa-13.jpg  <-  Mustard Gold Mehndi Khussa
+images/khussa-14.jpg  <-  Dark Brown Gold Thread Khussa
+images/khussa-15.jpg  <-  Grey Suede Khussa
+images/khussa-16.jpg  <-  Burgundy Zari Khussa
+images/khussa-17.jpg  <-  Ivory White Nikkah Khussa
+images/khussa-18.jpg  <-  Black Gold Designer Khussa
+images/sneaker-1.jpg  <-  Nike Court Vision Low White
+images/sneaker-2.jpg  <-  Nike Revolution Runner Black
+images/sneaker-3.jpg  <-  Nike Downshifter Grey Running Shoe
+images/sneaker-4.jpg  <-  Nike Air Max Street Navy
+images/sneaker-5.jpg  <-  Nike Flex Trainer Red Black
+images/sneaker-6.jpg  <-  Nike Pegasus Style Blue Runner
+images/sneaker-7.jpg  <-  Adidas Gazelle Classic Navy
+images/sneaker-8.jpg  <-  Adidas Superstar Style White Black
+images/sneaker-9.jpg  <-  Adidas Duramo Running Grey
+images/sneaker-10.jpg  <-  Adidas Campus Retro Green
+images/sneaker-11.jpg  <-  Adidas Lite Racer Black
+images/sneaker-12.jpg  <-  Adidas Samba Style Cream
+images/sneaker-13.jpg  <-  Puma Smash V2 White
+images/sneaker-14.jpg  <-  Puma Softride Runner Black
+images/sneaker-15.jpg  <-  Puma Rebound Mid Red
+images/sneaker-16.jpg  <-  Puma Suede Classic Blue
+images/sneaker-17.jpg  <-  Puma Anzarun Lite Grey
+images/sneaker-18.jpg  <-  Puma Disc Slip-On Black
+images/formal-1.jpg  <-  Black Leather Oxford
+images/formal-2.jpg  <-  Brown Derby Formal Shoe
+images/formal-3.jpg  <-  Tan Penny Loafer
+images/formal-4.jpg  <-  Black Monk Strap
+images/formal-5.jpg  <-  Classic Black Slip-On Loafer
+images/formal-6.jpg  <-  Brown Brogue Wingtip
+images/formal-7.jpg  <-  Black Chelsea Boot
+images/formal-8.jpg  <-  Tan Driving Moccasin
+images/formal-9.jpg  <-  Navy Suede Loafer
+images/formal-10.jpg  <-  Cognac Tassel Loafer
+images/formal-11.jpg  <-  Sand Suede Desert Boot
+images/formal-12.jpg  <-  Black Patent Tuxedo Shoe
+images/formal-13.jpg  <-  Brown Double Monk Strap
+images/formal-14.jpg  <-  Charcoal Casual Lace-Up
+images/formal-15.jpg  <-  Dark Brown Cap-Toe Oxford
+images/formal-16.jpg  <-  Walnut Chukka Boot
+images/formal-17.jpg  <-  Black Executive Derby
+images/formal-18.jpg  <-  Burgundy Leather Loafer
+images/eid-1.jpg  <-  Golden Groom Sherwani Khussa
+images/eid-2.jpg  <-  Eid Special Gold Zari Peshawari
+images/eid-3.jpg  <-  Royal Cream Nikkah Loafer
+images/eid-4.jpg  <-  Maroon Velvet Barat Khussa
+images/eid-5.jpg  <-  Black Embroidered Eid Khussa
+images/eid-6.jpg  <-  Ivory Pearl Wedding Moccasin
+images/eid-7.jpg  <-  Gold Stitch Mehndi Chappal
+images/eid-8.jpg  <-  Mustard Mayun Khussa
+images/eid-9.jpg  <-  Black Sherwani Formal Shoe
+images/eid-10.jpg  <-  Emerald Green Zari Khussa
+images/eid-11.jpg  <-  Eid Day Camel Tan Chappal
+images/eid-12.jpg  <-  Navy Embroidered Walima Loafer
+images/eid-13.jpg  <-  Antique Gold Barat Peshawari
+images/eid-14.jpg  <-  Burgundy Velvet Wedding Loafer
+images/eid-15.jpg  <-  White Eid Special Khussa
+images/eid-16.jpg  <-  Royal Blue Zari Groom Khussa
+images/eid-17.jpg  <-  Cream Zardozi Sherwani Khussa
+images/eid-18.jpg  <-  Black Gold Premium Wedding Shoe
+images/servis-1.jpg  <-  Servis Comfort Leather Sandal Brown
+images/servis-2.jpg  <-  Servis Black Casual Lace-Up
+images/servis-3.jpg  <-  Servis Daily Wear Slip-On Navy
+images/servis-4.jpg  <-  Servis Jogger Sports Shoe Grey
+images/servis-5.jpg  <-  Servis Open Toe Leather Slipper Tan
+images/servis-6.jpg  <-  Servis Executive Comfort Loafer Black
+images/servis-7.jpg  <-  Bata Comfit Walking Shoe Black
+images/servis-8.jpg  <-  Bata Power Sports Runner Blue
+images/servis-9.jpg  <-  Bata Casual Leather Sandal Brown
+images/servis-10.jpg  <-  Bata Canvas Casual Sneaker White
+images/servis-11.jpg  <-  Bata Premium Leather Slipper Black
+images/servis-12.jpg  <-  Bata Formal Lace-Up Classic Brown
+images/servis-13.jpg  <-  Metro Casual Loafer Tan
+images/servis-14.jpg  <-  Metro Soft Sole Slipper Black
+images/servis-15.jpg  <-  Metro Sporty Slip-On Grey
+images/servis-16.jpg  <-  Metro Leather Sandal Double Strap Brown
+images/servis-17.jpg  <-  Metro Weekend Suede Moccasin Navy
+images/servis-18.jpg  <-  Metro Daily Comfort Lace-Up Black

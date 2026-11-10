@@ -1,53 +1,1391 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Fluency Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KicksVault.PK - Pakistan's Premier Men's Footwear Store</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bs-body-font-family: 'Plus Jakarta Sans', sans-serif;
+      --pk-maroon: #800020;
+      --pk-maroon-hover: #5c0017;
+      --pk-gold: #d4af37;
+      --pk-gold-light: #fef08a;
+      --pk-dark: #0f172a;
+      --pk-bg: #f8fafc;
+      --pk-border: #e2e8f0;
+    }
+
+    body {
+      background-color: var(--pk-bg);
+      color: #1e293b;
+      min-height: 100vh;
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; height: 8px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: var(--pk-maroon); border-radius: 4px; }
+
+    /* Custom Buttons */
+    .btn-maroon {
+      background-color: var(--pk-maroon);
+      color: #ffffff;
+      border: none;
+    }
+    .btn-maroon:hover, .btn-maroon:focus, .btn-maroon:active {
+      background-color: var(--pk-maroon-hover) !important;
+      color: #ffffff !important;
+    }
+
+    .btn-whatsapp {
+      background-color: #25d366;
+      color: #ffffff;
+      border: none;
+    }
+    .btn-whatsapp:hover {
+      background-color: #1da851;
+      color: #ffffff;
+    }
+
+    .badge-sale {
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      color: #ffffff;
+    }
+
+    .badge-gold {
+      background-color: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+    }
+
+    /* Top Announcement Bar */
+    .top-announcement {
+      background: linear-gradient(90deg, #5c0017 0%, var(--pk-maroon) 50%, #5c0017 100%);
+      color: #ffffff;
+      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+    }
+
+    /* Navbar */
+    .pk-navbar {
+      background-color: #ffffff;
+      border-bottom: 2px solid var(--pk-maroon);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: radial-gradient(circle at 90% 10%, rgba(128, 0, 32, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                  #ffffff;
+      border-bottom: 1px solid var(--pk-border);
+    }
+
+    /* Product Cards */
+    .product-card {
+      background-color: #ffffff;
+      border: 1px solid var(--pk-border);
+      border-radius: 1rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--pk-maroon);
+      box-shadow: 0 15px 35px -10px rgba(128, 0, 32, 0.15);
+    }
+
+    .product-img-wrapper {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background-color: #f1f5f9;
+    }
+    .product-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .product-card:hover .product-img-wrapper img {
+      transform: scale(1.08);
+    }
+
+    /* Floating WhatsApp Button */
+    .floating-wa-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1040;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background-color: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+      transition: transform 0.2s ease;
+    }
+    .floating-wa-btn:hover {
+      transform: scale(1.1);
+      color: #ffffff;
+    }
+
+    /* Wishlist Heart */
+    .btn-wishlist {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      color: #64748b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .btn-wishlist:hover, .btn-wishlist.active {
+      color: #dc2626;
+      background: #ffffff;
+    }
+
+    /* Size Pills */
+    .size-btn {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border-radius: 0.5rem;
+      background-color: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+      transition: all 0.2s ease;
+    }
+    .size-btn:hover, .size-btn.active {
+      background-color: var(--pk-maroon);
+      border-color: var(--pk-maroon);
+      color: #ffffff;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Utility classes used in markup (not provided by Bootstrap) */
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .fw-black { font-weight: 900; }
+    .fw-extrabold { font-weight: 800; }
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .font-black { font-weight: 900; }
+    .font-sans { font-family: var(--bs-body-font-family); }
+    .tracking-tight { letter-spacing: -0.02em; }
+    .tracking-wider { letter-spacing: 0.05em; }
+    .uppercase { text-transform: uppercase; }
+    .cursor-pointer { cursor: pointer; }
+    .max-w-md { max-width: 28rem; }
+    .max-w-lg { max-width: 32rem; }
+    .py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+    .py-1\.5 { padding-top: 0.375rem; padding-bottom: 0.375rem; }
+    .p-2\.5 { padding: 0.625rem; }
+    .py-2\.5 { padding-top: 0.625rem; padding-bottom: 0.625rem; }
+    .px-2\.5 { padding-left: 0.625rem; padding-right: 0.625rem; }
+    .space-y-1 > * + * { margin-top: 0.25rem; }
+    .space-y-2 > * + * { margin-top: 0.5rem; }
+    .space-y-3 > * + * { margin-top: 0.75rem; }
+    .sr-only-heading { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+    body { overflow-x: hidden; }
+    img { max-width: 100%; }
+    :focus-visible { outline: 3px solid var(--pk-gold); outline-offset: 2px; }
+
+    /* Premium polish */
+    .pk-navbar { backdrop-filter: blur(8px); }
+    .product-card { box-shadow: 0 1px 3px rgba(15,23,42,0.05); }
+    .product-card h3 { letter-spacing: -0.01em; }
+    .btn { transition: background-color .2s ease, color .2s ease, border-color .2s ease, transform .2s ease; }
+    .btn:active { transform: scale(0.98); }
+    .footer-links a { color: var(--pk-maroon); text-decoration: none; font-weight: 700; }
+    .footer-links a:hover { text-decoration: underline; }
+    @media (max-width: 575.98px) {
+      .hero-banner h1 { font-size: 1.9rem; }
+      .top-announcement { font-size: 0.7rem; }
+      .floating-wa-btn { bottom: 16px; right: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+    /* Offline icon set (Font Awesome Free SVGs, CC BY 4.0) mapped onto existing "bi bi-*" class names */
+    .bi { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; background-color: currentColor;
+          -webkit-mask: var(--ic) center / contain no-repeat; mask: var(--ic) center / contain no-repeat; flex-shrink: 0; }
+    .bi::before { content: none !important; }
+    .bi-whatsapp { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157m-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1s56.2 81.2 56.1 130.5c0 101.8-84.9 184.6-186.6 184.6m101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8s-14.3 18-17.6 21.8c-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7s-12.5-30.1-17.1-41.2c-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2s-9.7 1.4-14.8 6.9c-5.1 5.6-19.4 19-19.4 46.3s19.9 53.7 22.6 57.4c2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4s4.6-24.1 3.2-26.4c-1.3-2.5-5-3.9-10.5-6.6%22/%3E%3C/svg%3E"); }
+    .bi-star-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M309.5-18.9c-4.1-8-12.4-13.1-21.4-13.1s-17.3 5.1-21.4 13.1l-73.6 144.2-159.9 25.4c-8.9 1.4-16.3 7.7-19.1 16.3s-.5 18 5.8 24.4l114.4 114.5-25.2 159.9c-1.4 8.9 2.3 17.9 9.6 23.2s16.9 6.1 25 2l144.4-73.4L432.4 491c8 4.1 17.7 3.3 25-2s11-14.2 9.6-23.2l-25.3-159.9 114.4-114.5c6.4-6.4 8.6-15.8 5.8-24.4s-10.1-14.9-19.1-16.3L383 125.3z%22/%3E%3C/svg%3E"); }
+    .bi-search { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M416 208c0 45.9-14.9 88.3-40 122.7l126.6 126.7c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.1-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208M208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288%22/%3E%3C/svg%3E"); }
+    .bi-ruler { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M48 384c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48h24v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h48v72c0 13.3 10.7 24 24 24s24-10.7 24-24v-72h48v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h48v72c0 13.3 10.7 24 24 24s24-10.7 24-24v-72h48v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h24c26.5 0 48 21.5 48 48v160c0 26.5-21.5 48-48 48z%22/%3E%3C/svg%3E"); }
+    .bi-rulers { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M48 384c-26.5 0-48-21.5-48-48V176c0-26.5 21.5-48 48-48h24v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h48v72c0 13.3 10.7 24 24 24s24-10.7 24-24v-72h48v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h48v72c0 13.3 10.7 24 24 24s24-10.7 24-24v-72h48v104c0 13.3 10.7 24 24 24s24-10.7 24-24V128h24c26.5 0 48 21.5 48 48v160c0 26.5-21.5 48-48 48z%22/%3E%3C/svg%3E"); }
+    .bi-check-circle-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M256 512a256 256 0 1 1 0-512 256 256 0 1 1 0 512m118-366.3c-10.7-7.8-25.7-5.4-33.5 5.3L221.1 315.2 169 263.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.8 7.5 18.8 7s13.4-4.1 17.5-9.8l135.9-187c7.8-10.7 5.4-25.7-5.3-33.5%22/%3E%3C/svg%3E"); }
+    .bi-heart { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M378.9 80c-27.3 0-53 13.1-69 35.2l-34.4 47.6c-4.5 6.2-11.7 9.9-19.4 9.9s-14.9-3.7-19.4-9.9l-34.4-47.6c-16-22.1-41.7-35.2-69-35.2-47 0-85.1 38.1-85.1 85.1 0 49.9 32 98.4 68.1 142.3 41.1 50 91.4 94 125.9 120.3 3.2 2.4 7.9 4.2 14 4.2s10.8-1.8 14-4.2c34.5-26.3 84.8-70.4 125.9-120.3 36.2-43.9 68.1-92.4 68.1-142.3 0-47-38.1-85.1-85.1-85.1zM271 87.1C296 52.5 336.2 32 378.9 32 452.4 32 512 91.6 512 165.1c0 68.6-42.9 128.9-79.1 172.8-44.1 53.6-97.3 100.1-133.8 127.9-12.3 9.4-27.5 14.1-43.1 14.1s-30.8-4.7-43.1-14.1C176.4 438 123.2 391.5 79.1 338 42.9 294.1 0 233.7 0 165.1 0 91.6 59.6 32 133.1 32 175.8 32 216 52.5 241 87.1l15 20.7z%22/%3E%3C/svg%3E"); }
+    .bi-heart-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22m241 87.1 15 20.7 15-20.7C296 52.5 336.2 32 378.9 32 452.4 32 512 91.6 512 165.1v2.6c0 112.2-139.9 242.5-212.9 298.2-12.4 9.4-27.6 14.1-43.1 14.1s-30.8-4.6-43.1-14.1C139.9 410.2 0 279.9 0 167.7v-2.6C0 91.6 59.6 32 133.1 32 175.8 32 216 52.5 241 87.1%22/%3E%3C/svg%3E"); }
+    .bi-cash-stack { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M0 419.6V109.5c0-23.2 24.1-38.6 46.3-32C134 103.7 196 83 258.4 62.2c64.5-21.5 129.4-43.1 223.3-13.1C500.2 55 512 72.9 512 92.4v310.1c0 23.2-24.1 38.6-46.2 32-87.7-26.2-149.8-5.5-212.1 15.3-64.5 21.5-129.4 43.1-223.3 13.1C11.9 457 .1 439.1.1 419.6zM336 256c0-53-35.8-96-80-96s-80 43-80 96 35.8 96 80 96 80-43 80-96M120 413.6c4.4 0 7.9-3.8 7.2-8.1-4.6-27.8-27-49.5-55.2-53-4.4-.5-8 3.1-8 7.5v39.9c0 3.6 2.4 6.8 6 7.7 17.9 4.2 34.3 6.1 50 6.1zm318.5-51.1c5 .8 9.5-3 9.5-8v-42.6c0-4.4-3.6-8.1-8-7.5-25.2 3.1-45.9 20.9-53.2 44.6-1.4 4.7 2.3 9.1 7.2 9.2 14.2.4 29 1.7 44.4 4.3zM448 152v-39.9c0-3.6-2.5-6.8-6-7.7-17.9-4.2-34.3-6.1-50-6.1-4.4 0-7.9 3.8-7.2 8.1 4.6 27.8 27 49.5 55.2 53 4.4.5 8-3.1 8-7.5zm-322.8 10.9c1.4-4.7-2.3-9.1-7.2-9.2-14.2-.4-29-1.7-44.4-4.3-5-.8-9.5 3-9.5 8L64 200c0 4.4 3.6 8.1 8 7.5 25.2-3.1 45.9-20.9 53.2-44.6%22/%3E%3C/svg%3E"); }
+    .bi-bag-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160zm-48 48H48c-26.5 0-48 21.5-48 48v208c0 53 43 96 96 96h256c53 0 96-43 96-96V176c0-26.5-21.5-48-48-48h-64V80c0-61.9-50.1-112-112-112S112 18.1 112 80zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48m152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0%22/%3E%3C/svg%3E"); }
+    .bi-bag-plus { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160zm-48 48H48c-26.5 0-48 21.5-48 48v208c0 53 43 96 96 96h256c53 0 96-43 96-96V176c0-26.5-21.5-48-48-48h-64V80c0-61.9-50.1-112-112-112S112 18.1 112 80zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48m152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0%22/%3E%3C/svg%3E"); }
+    .bi-bag-x { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160zm-48 48H48c-26.5 0-48 21.5-48 48v208c0 53 43 96 96 96h256c53 0 96-43 96-96V176c0-26.5-21.5-48-48-48h-64V80c0-61.9-50.1-112-112-112S112 18.1 112 80zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48m152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0%22/%3E%3C/svg%3E"); }
+    .bi-bag-check-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M160 80c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160zm-48 48H48c-26.5 0-48 21.5-48 48v208c0 53 43 96 96 96h256c53 0 96-43 96-96V176c0-26.5-21.5-48-48-48h-64V80c0-61.9-50.1-112-112-112S112 18.1 112 80zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48m152 24a24 24 0 1 1 48 0 24 24 0 1 1-48 0%22/%3E%3C/svg%3E"); }
+    .bi-arrow-right { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M502.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L402.7 224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h370.7L297.3 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z%22/%3E%3C/svg%3E"); }
+    .bi-x-circle-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-89-345c9.4-9.4 24.6-9.4 33.9 0l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9%22/%3E%3C/svg%3E"); }
+    .bi-wallet2 { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M64 32C28.7 32 0 60.7 0 96v288c0 35.3 28.7 64 64 64h384c35.3 0 64-28.7 64-64V192c0-35.3-28.7-64-64-64H72c-13.3 0-24-10.7-24-24s10.7-24 24-24h384c13.3 0 24-10.7 24-24s-10.7-24-24-24zm352 224a32 32 0 1 1 0 64 32 32 0 1 1 0-64%22/%3E%3C/svg%3E"); }
+    .bi-truck { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M0 96c0-35.3 28.7-64 64-64h288c35.3 0 64 28.7 64 64v32h50.7c17 0 33.3 6.7 45.3 18.7l45.3 45.3c12 12 18.7 28.3 18.7 45.3V384c0 35.3-28.7 64-64 64h-3.3c-10.4 36.9-44.4 64-84.7 64s-74.2-27.1-84.7-64H236.7c-10.4 36.9-44.4 64-84.7 64s-74.2-27.1-84.7-64H64c-35.3 0-64-28.7-64-64zm512 192v-50.7L466.7 192H416v96zM192 424a40 40 0 1 0-80 0 40 40 0 1 0 80 0m232 40a40 40 0 1 0 0-80 40 40 0 1 0 0 80%22/%3E%3C/svg%3E"); }
+    .bi-stars { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22m263.4-27 14.8 36.8L315 24.6c3 1.2 5 4.2 5 7.4s-2 6.2-5 7.4l-36.8 14.8L263.4 91c-1.2 3-4.2 5-7.4 5s-6.2-2-7.4-5l-14.8-36.8L197 39.4c-3-1.2-5-4.2-5-7.4s2-6.2 5-7.4l36.8-14.8L248.6-27c1.2-3 4.2-5 7.4-5s6.2 2 7.4 5M110.7 41.7l21.5 50.1 50.1 21.5c5.9 2.5 9.7 8.3 9.7 14.7s-3.8 12.2-9.7 14.7l-50.1 21.5-21.5 50.1c-2.5 5.9-8.3 9.7-14.7 9.7s-12.2-3.8-14.7-9.7l-21.5-50.1-50.1-21.5C3.8 140.2 0 134.4 0 128s3.8-12.2 9.7-14.7l50.1-21.5 21.5-50.1C83.8 35.8 89.6 32 96 32s12.2 3.8 14.7 9.7M464 304c6.4 0 12.2 3.8 14.7 9.7l21.5 50.1 50.1 21.5c5.9 2.5 9.7 8.3 9.7 14.7s-3.8 12.2-9.7 14.7l-50.1 21.5-21.5 50.1c-2.5 5.9-8.3 9.7-14.7 9.7s-12.2-3.8-14.7-9.7l-21.5-50.1-50.1-21.5c-5.9-2.5-9.7-8.3-9.7-14.7s3.8-12.2 9.7-14.7l50.1-21.5 21.5-50.1c2.5-5.9 8.3-9.7 14.7-9.7M460 0c11 0 21.6 4.4 29.5 12.2l42.3 42.3C539.6 62.4 544 73 544 84s-4.4 21.6-12.2 29.5l-88.2 88.2-101.3-101.3 88.2-88.2C438.4 4.4 449 0 460 0M44.2 398.5l264.2-264.2 101.3 101.3-264.2 264.2C137.6 507.6 127 512 116 512s-21.6-4.4-29.5-12.2l-42.3-42.3C36.4 449.6 32 439 32 428s4.4-21.6 12.2-29.5%22/%3E%3C/svg%3E"); }
+    .bi-sliders { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M32 64C14.3 64 0 78.3 0 96s14.3 32 32 32h86.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H265.3C253 35.7 224.8 16 192 16s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h246.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32h-54.7c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32h54.7c12.3 28.3 40.5 48 73.3 48s61-19.7 73.3-48H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H233.3c-12.3-28.3-40.5-48-73.3-48s-61 19.7-73.3 48z%22/%3E%3C/svg%3E"); }
+    .bi-shield-check { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M256 0c4.6 0 9.2 1 13.4 2.9l188.4 79.9c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.8 0C57.3 420.7 16.6 239.2 16.1 140c-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.9 1 251.4 0 256 0m0 66.8v378.1c138-66.8 175.1-214.8 176-303.4L256 66.9z%22/%3E%3C/svg%3E"); }
+    .bi-plus { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M256 64c0-17.7-14.3-32-32-32s-32 14.3-32 32v160H32c-17.7 0-32 14.3-32 32s14.3 32 32 32h160v160c0 17.7 14.3 32 32 32s32-14.3 32-32V288h160c17.7 0 32-14.3 32-32s-14.3-32-32-32H256z%22/%3E%3C/svg%3E"); }
+    .bi-phone-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M160.2 25c-7.9-18.9-28.5-28.9-48.1-23.6l-5.5 1.5C42 20.5-13.2 83.1 2.9 159.3 40 334.3 177.7 472 352.7 509.1 429 525.3 491.5 470 509.1 405.4l1.5-5.5c5.4-19.7-4.7-40.3-23.5-48.1l-97.3-40.5c-16.5-6.9-35.6-2.1-47 11.8l-38.6 47.2c-70.3-34.9-126.9-93.3-159.4-165l44.2-36c13.9-11.3 18.6-30.4 11.8-47z%22/%3E%3C/svg%3E"); }
+    .bi-info-circle-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512m-32-352a32 32 0 1 1 64 0 32 32 0 1 1-64 0m-8 64h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24%22/%3E%3C/svg%3E"); }
+    .bi-grid { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M384 96H256v128h128zm64 128v192c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96c0-35.3 28.7-64 64-64h320c35.3 0 64 28.7 64 64zM64 288v128h128V288zm128-64V96H64v128zm64 64v128h128V288z%22/%3E%3C/svg%3E"); }
+    .bi-geo-alt-fill { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 384 512%22%3E%3Cpath d=%22M0 188.6C0 84.4 86 0 192 0s192 84.4 192 188.6c0 119.3-120.2 262.3-170.4 316.8-11.8 12.8-31.5 12.8-43.3 0C120.1 450.9-.1 307.9-.1 188.6zM192 256a64 64 0 1 0 0-128 64 64 0 1 0 0 128%22/%3E%3C/svg%3E"); }
+    .bi-eye { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.7 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.7-108.3C406.8 109.6 353.2 80 288 80M95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1 3.3 7.9 3.3 16.7 0 24.6-14.9 35.7-46.2 87.7-93 131.1C433.5 443.1 368.8 480 288 480s-145.5-36.8-192.6-80.6c-46.8-43.5-78.1-95.4-93-131.1-3.3-7.9-3.3-16.7 0-24.6 14.9-35.7 46.2-87.7 93-131.1M288 336c44.2 0 80-35.8 80-80 0-29.6-16.1-55.5-40-69.3-1.4 59.7-49.6 107.9-109.3 109.3 13.8 23.9 39.7 40 69.3 40m-79.6-88.4c2.5.3 5 .4 7.6.4 35.3 0 64-28.7 64-64 0-2.6-.2-5.1-.4-7.6-37.4 3.9-67.2 33.7-71.1 71.1zm45.6-115c10.8-3 22.2-4.5 33.9-4.5 8.8 0 17.5.9 25.8 2.6.3.1.5.1.8.2 57.9 12.2 101.4 63.7 101.4 125.2 0 70.7-57.3 128-128 128-61.6 0-113-43.5-125.2-101.4-1.8-8.6-2.8-17.5-2.8-26.6 0-11 1.4-21.8 4-32 .2-.7.3-1.3.5-1.9 11.9-43.4 46.1-77.6 89.5-89.5z%22/%3E%3C/svg%3E"); }
+    .bi-dash { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 448 512%22%3E%3Cpath d=%22M0 256c0-17.7 14.3-32 32-32h384c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32%22/%3E%3C/svg%3E"); }
+    .bi-clock-history { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 576 512%22%3E%3Cpath d=%22M288 64c106 0 192 86 192 192s-86 192-192 192c-65.2 0-122.9-32.5-157.6-82.3-10.1-14.5-30.1-18-44.6-7.9s-18 30.1-7.9 44.6C124.1 468.6 201 512 288 512c141.4 0 256-114.6 256-256S429.4 0 288 0C202.3 0 126.5 42.1 80 106.7V80c0-17.7-14.3-32-32-32S16 62.3 16 80v112c0 17.7 14.3 32 32 32h112.1c17.7 0 32-14.3 32-32s-14.3-32-32-32h-38.3C154.9 102.6 217 64 288 64m24 88c0-13.3-10.7-24-24-24s-24 10.7-24 24v104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152z%22/%3E%3C/svg%3E"); }
+    .bi-bank { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M271.9 20.2c-9.8-5.6-21.9-5.6-31.8 0l-224 128c-12.6 7.2-18.8 22-15.1 36S17.5 208 32 208h32v208l-51.2 38.4C4.7 460.4 0 469.9 0 480c0 17.7 14.3 32 32 32h448c17.7 0 32-14.3 32-32 0-10.1-4.7-19.6-12.8-25.6L448 416V208h32c14.5 0 27.2-9.8 30.9-23.8s-2.5-28.8-15.1-36l-224-128zM400 208v208h-64V208zm-112 0v208h-64V208zm-112 0v208h-64V208zm80-112a32 32 0 1 1 0 64 32 32 0 1 1 0-64%22/%3E%3C/svg%3E"); }
+    .bi-arrow-counterclockwise { --ic: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 512 512%22%3E%3Cpath d=%22M24 192h144c9.7 0 18.5-5.8 22.2-14.8s1.7-19.3-5.2-26.2l-46.7-46.7c75.3-58.6 184.3-53.3 253.5 15.9 75 75 75 196.5 0 271.5s-196.5 75-271.5 0c-10.2-10.2-19-21.3-26.4-33-9.5-14.9-29.3-19.3-44.2-9.8s-19.3 29.3-9.8 44.2c9.8 15.6 21.5 30.4 35.1 43.9 100 100 262 100 362 0s100-262 0-362C342.8-19.3 193.3-24.7 92.7 58.8L41 7C34.1.2 23.8-1.9 14.8 1.8S0 14.3 0 24v144c0 13.3 10.7 24 24 24%22/%3E%3C/svg%3E"); }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <div class="logo">My Portfolio</div>
-            <ul class="nav-links">
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main class="container">
-        <section class="hero">
-            <h1>I build with AI tools — and I can explain how</h1>
-            <p class="hero-text">Hi, I'm building fluency with AI: designing prompts, automating small workflows, and using tools to research, build, and ship things faster. This site is a running log of that work.</p>
-            <div class="hero-links">
-                <a href="projects.html" class="btn">See the work</a>
-                <a href="contact.html" class="btn-secondary">Get in touch</a>
+  <!-- ==================== ANNOUNCEMENT BAR ==================== -->
+  <div class="top-announcement py-2 px-3 text-center fw-bold">
+    <div class="container-xl d-flex align-items-center justify-content-between flex-wrap gap-2">
+      <span class="mx-auto mx-md-0"><i class="bi bi-truck me-1 text-warning"></i> Free delivery in Hyderabad on orders over Rs. 5,000. Standard delivery Rs. 250 across Pakistan.</span>
+      <span class="d-none d-md-inline text-warning"><i class="bi bi-clock-history me-1"></i> Dispatch in 2-4 days | 7-day exchange</span>
+    </div>
+  </div>
+
+  <!-- ==================== HEADER / NAVBAR ==================== -->
+  <header class="sticky-top pk-navbar z-3">
+    <nav class="navbar navbar-expand-md py-3">
+      <div class="container-xl">
+        
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center gap-2 m-0" href="#" onclick="resetFilters(); return false;">
+          <div class="rounded-3 text-white fw-black d-flex align-items-center justify-content-center shadow" style="width: 42px; height: 42px; background: var(--pk-maroon); font-weight: 900; font-size: 1.3rem;">
+            K
+          </div>
+          <div>
+            <span class="fs-4 fw-extrabold tracking-tight text-dark uppercase">KICKS<span style="color: var(--pk-maroon);">VAULT.PK</span></span>
+            <span class="d-none d-sm-block text-uppercase text-muted font-monospace" style="font-size: 0.65rem; letter-spacing: 1px;">Men's Footwear Store</span>
+          </div>
+        </a>
+
+        <!-- Search Bar Desktop -->
+        <div class="d-none d-md-flex flex-grow-1 mx-4 max-w-md position-relative">
+          <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+          <input 
+            type="text" 
+            id="searchInput" aria-label="Search footwear" 
+            class="form-control rounded-pill ps-5 bg-light border-secondary-subtle text-dark text-sm" 
+            placeholder="Search Peshawari, Khussa, Servis, Bata, Nike..."
+            onkeyup="handleSearch()"
+          >
+          <button id="clearSearchBtn" class="btn btn-link text-muted position-absolute end-0 top-50 translate-middle-y me-2 d-none" onclick="clearSearch()" aria-label="Clear search">
+            <i class="bi bi-x-circle-fill"></i>
+          </button>
+        </div>
+
+        <!-- Right Action Controls -->
+        <div class="d-flex align-items-center gap-2 gap-sm-3">
+          <button class="btn btn-outline-danger btn-sm p-2 rounded-3" data-bs-toggle="modal" data-bs-target="#sizeGuideModal" title="PK Size Chart" aria-label="Open PK size chart">
+            <i class="bi bi-ruler fs-5" style="color: var(--pk-maroon);"></i>
+          </button>
+
+          <button class="btn btn-maroon rounded-3 p-2 position-relative d-flex align-items-center justify-content-center" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas" aria-label="Open shopping cart">
+            <i class="bi bi-bag-fill fs-5"></i>
+            <span id="cartCountBadge" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning text-dark font-bold d-none">
+              0
+            </span>
+          </button>
+        </div>
+
+      </div>
+    </nav>
+
+    <!-- Mobile Search Bar -->
+    <div class="d-md-none px-3 pb-3 pt-2 bg-white border-top">
+      <div class="position-relative">
+        <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"></i>
+        <input 
+          type="text" 
+          id="mobileSearchInput" aria-label="Search footwear" 
+          class="form-control rounded-pill ps-5 bg-light border-secondary-subtle text-dark text-sm" 
+          placeholder="Search Peshawari, Khussa, Sneakers..."
+          onkeyup="handleMobileSearch()"
+        >
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== HERO BANNER ==================== -->
+  <section class="hero-banner py-4 py-md-5">
+    <div class="container-xl">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <span class="badge badge-gold rounded-pill px-3 py-2 text-uppercase mb-3 d-inline-flex align-items-center gap-1 font-semibold">
+            <i class="bi bi-stars text-warning"></i> Eid & Wedding Collection 2026
+          </span>
+          <h1 class="display-5 fw-black text-dark tracking-tight lh-1 mb-3">
+            HERITAGE & STYLE. <br>
+            <span style="color: var(--pk-maroon);">
+              FESTIVE SALE: UP TO 30% OFF
+            </span>
+          </h1>
+          <p class="text-muted lead fs-6 mb-4 max-w-lg">
+            Shop authentic Pakistani handcrafted men's <strong>Peshawari Chappals, Khussas, Formal Shoes & Sneakers</strong> from <strong>Servis, Bata, Metro, Nike, Adidas & Puma</strong>.
+          </p>
+          <div class="d-flex flex-wrap gap-2">
+            <button class="btn btn-maroon rounded-pill px-4 py-2 text-sm font-bold shadow-sm" onclick="filterCategory('peshawari')">Peshawari Chappals</button>
+            <button class="btn btn-outline-dark rounded-pill px-4 py-2 text-sm font-bold" onclick="filterCategory('khussa')">Handcrafted Khussa</button>
+            <button class="btn btn-outline-danger rounded-pill px-4 py-2 text-sm font-bold" onclick="filterCategory('sneakers')">Sneakers</button>
+            <button class="btn btn-outline-dark rounded-pill px-4 py-2 text-sm font-bold" onclick="filterCategory('eid')">Eid Specials</button>
+          </div>
+        </div>
+
+        <!-- Featured Banner Card -->
+        <div class="col-lg-5">
+          <div class="p-4 rounded-4 bg-white border border-danger-subtle d-flex flex-column flex-sm-row align-items-center gap-4 shadow-sm">
+            <img 
+              src="images/peshawari-1.jpg" onerror="this.onerror=null;this.src='images/placeholder.jpg'" 
+              alt="Peshawari Chappal" 
+              class="rounded-3 object-fit-cover flex-shrink-0"
+              style="width: 170px; height: 170px;"
+            >
+            <div>
+              <span class="badge badge-sale rounded-pill text-uppercase px-2 py-1 text-xs mb-1">EID SPECIAL</span>
+              <h2 class="h4 fw-bold text-dark mb-1">Classic Brown Kaptaan Chappal</h2>
+              <p class="text-muted text-xs mb-2">Authentic pure leather, hand-stitched by native craftsmen.</p>
+              <div class="mb-2">
+                <del class="text-muted text-xs">Rs. 4,200</del>
+                <span class="fs-5 fw-black text-danger ms-1">Rs. 2,999</span>
+              </div>
+              <button class="btn btn-maroon btn-sm rounded-3 px-3 py-2 font-bold w-100" onclick="openProductModal('pesh-1')">
+                View Deal <i class="bi bi-arrow-right ms-1"></i>
+              </button>
             </div>
-        </section>
+          </div>
+        </div>
 
-        <section class="content-section">
-            <span class="sub-heading">// Right now</span>
-            <h2>What I'm focused on</h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== LOCAL GUARANTEES BAR ==================== -->
+  <section class="bg-white border-bottom py-3">
+    <div class="container-xl">
+      <div class="row row-cols-2 row-cols-md-4 g-3 text-center text-xs font-semibold text-dark">
+        <div class="col border-end">
+          <i class="bi bi-cash-stack fs-4 text-danger d-block mb-1" style="color: var(--pk-maroon)!important;"></i>
+          <span>Cash on Delivery Nationwide</span>
+        </div>
+        <div class="col border-end-md">
+          <i class="bi bi-geo-alt-fill fs-4 text-warning d-block mb-1"></i>
+          <span>Free Express Delivery in Hyderabad</span>
+        </div>
+        <div class="col border-end">
+          <i class="bi bi-arrow-counterclockwise fs-4 text-primary d-block mb-1"></i>
+          <span>7-Day Hassle-Free Exchange</span>
+        </div>
+        <div class="col">
+          <i class="bi bi-whatsapp fs-4 text-success d-block mb-1"></i>
+          <span>Easy WhatsApp Ordering</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== MAIN CATALOG ==================== -->
+  <main class="container-xl py-5">
+    <h2 class="sr-only-heading">Footwear Collection</h2>
+    
+    <!-- Controls & Filters Bar -->
+    <div class="d-flex flex-column gap-3 pb-4 mb-4 border-bottom">
+      
+      <!-- Category Pills -->
+      <div class="d-flex align-items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+        <span class="text-muted text-xs font-bold text-uppercase me-2 shrink-0">Categories:</span>
+        <button class="btn btn-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill active" data-cat="All" onclick="filterCategory('All')">All</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="peshawari" onclick="filterCategory('peshawari')">Peshawari Chappal</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="khussa" onclick="filterCategory('khussa')">Handcrafted Khussa</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="sneakers" onclick="filterCategory('sneakers')">Sneakers</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="formal" onclick="filterCategory('formal')">Formal & Casual</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="eid" onclick="filterCategory('eid')">Eid & Wedding Specials</button>
+        <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold cat-pill" data-cat="servis" onclick="filterCategory('servis')">Servis / Bata / Metro</button>
+      </div>
+
+      <!-- Brand Filter Tabs & Sorting -->
+      <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between gap-3 pt-2">
+        
+        <div class="d-flex align-items-center gap-2 overflow-x-auto no-scrollbar">
+          <span class="text-muted text-xs font-bold text-uppercase me-2 shrink-0">Brands:</span>
+          <button class="btn btn-maroon rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn active" data-brand="All" onclick="filterBrand('All')">All Brands</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Servis" onclick="filterBrand('Servis')">Servis</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Bata" onclick="filterBrand('Bata')">Bata</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Metro" onclick="filterBrand('Metro')">Metro</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Nike" onclick="filterBrand('Nike')">Nike</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Adidas" onclick="filterBrand('Adidas')">Adidas</button>
+          <button class="btn btn-outline-secondary text-dark rounded-pill px-3 py-1.5 text-xs font-bold brand-tab-btn" data-brand="Puma" onclick="filterBrand('Puma')">Puma</button>
+        </div>
+
+        <!-- Sort Selector -->
+        <div class="d-flex align-items-center gap-2 bg-white border rounded-3 px-3 py-1.5 text-xs font-semibold text-muted ms-auto">
+          <i class="bi bi-sliders text-dark"></i>
+          <span>Sort By:</span>
+          <select id="sortSelect" class="bg-transparent border-0 text-dark font-bold focus-ring-none" onchange="handleSortChange()">
+            <option value="featured">Featured</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Results Count Bar -->
+    <div class="d-flex align-items-center justify-content-between mb-4">
+      <p class="text-muted text-sm mb-0">
+        Showing <strong id="productCount" class="text-dark">All Footwear</strong>
+      </p>
+      <span class="text-xs font-semibold text-danger">
+        <i class="bi bi-check-circle-fill me-1"></i> Standard PK Sizing (6 to 11)
+      </span>
+    </div>
+
+    <!-- Product Grid -->
+    <div id="productGrid" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
+      <!-- Dynamic Footwear Cards Inserted Here -->
+    </div>
+
+    <!-- Empty Filter State -->
+    <div id="emptyState" class="text-center py-5 d-none">
+      <i class="bi bi-search fs-1 text-muted mb-3 d-block"></i>
+      <h4 class="fw-bold text-dark">No Footwear Found</h4>
+      <p class="text-muted text-sm">Try adjusting your brand or category selection.</p>
+      <button class="btn btn-outline-dark btn-sm rounded-pill mt-2" onclick="resetFilters()">Reset All Filters</button>
+    </div>
+  </main>
+
+  <!-- ==================== PRODUCT DETAILS MODAL ==================== -->
+  <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 overflow-hidden border-0 shadow-lg">
+        <div class="modal-header border-bottom py-3 bg-light">
+          <h5 class="modal-title fw-bold text-dark text-sm" id="modalBrandCategory">FOOTWEAR DETAILS</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-0">
+          <div class="row g-0">
+            <div class="col-md-6 bg-light d-flex align-items-center justify-content-center p-4">
+              <img id="modalImage" src="" alt="Footwear" onerror="this.onerror=null;this.src='images/placeholder.jpg'" class="img-fluid rounded-3 object-fit-cover shadow-sm">
+            </div>
+            <div class="col-md-6 p-4 d-flex flex-column justify-content-between">
+              <div>
+                <div class="d-flex align-items-center justify-content-between mb-1">
+                  <span id="modalBrand" class="text-uppercase font-bold text-xs" style="color: var(--pk-maroon);">BRAND</span>
+                  <span id="modalRating" class="badge bg-warning-subtle text-dark border border-warning text-xs font-semibold">
+                    <i class="bi bi-star-fill text-warning"></i> 4.9
+                  </span>
+                </div>
+                <h3 id="modalTitle" class="fw-bold text-dark mb-1">Product Title</h3>
+                <p id="modalColorway" class="text-muted text-xs mb-3">Colorway & Material</p>
+                <p id="modalDescription" class="text-muted text-sm mb-4">Product description detailing craftsmanship and sole materials.</p>
+
+                <!-- Size Selector (PK) -->
+                <div class="mb-4">
+                  <div class="d-flex align-items-center justify-content-between mb-2">
+                    <span class="text-xs font-bold text-dark text-uppercase">Select PK Size</span>
+                    <button class="btn btn-link text-danger p-0 text-xs text-decoration-none" data-bs-toggle="modal" data-bs-target="#sizeGuideModal">
+                      <i class="bi bi-ruler me-1"></i> Size Chart (cm)
+                    </button>
+                  </div>
+                  <div id="modalSizesContainer" class="d-flex flex-wrap gap-2">
+                    <!-- Dynamic PK sizes pills -->
+                  </div>
+                </div>
+              </div>
+
+              <!-- Price & Actions -->
+              <div class="pt-3 border-top d-flex flex-column gap-2">
+                <div class="d-flex align-items-baseline gap-2 mb-2">
+                  <span id="modalOldPrice" class="text-muted text-decoration-line-through text-sm">Rs. 4,500</span>
+                  <span id="modalPrice" class="fs-4 fw-black text-danger">Rs. 2,999</span>
+                  <span id="modalSaveBadge" class="badge badge-sale rounded-pill text-xs ms-auto">33% OFF</span>
+                </div>
+                <div class="d-flex gap-2">
+                  <button id="modalAddToCartBtn" class="btn btn-maroon rounded-3 px-4 py-2.5 font-bold flex-grow-1 shadow-sm">
+                    <i class="bi bi-bag-plus me-1"></i> Add To Cart
+                  </button>
+                  <button id="modalWhatsAppBtn" class="btn btn-whatsapp rounded-3 px-3 py-2.5 font-bold" title="Order via WhatsApp">
+                    <i class="bi bi-whatsapp fs-5"></i>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== PK SIZE CONVERTER MODAL ==================== -->
+  <div class="modal fade" id="sizeGuideModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 p-2">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="modal-title fw-bold text-dark d-flex align-items-center gap-2">
+            <i class="bi bi-ruler text-danger" style="color: var(--pk-maroon);"></i> PK Shoe Size Conversion
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p class="text-muted text-xs mb-3">Pakistani shoes follow standard <strong>PK</strong> sizing. Measure your foot length in centimeters (cm) for an accurate fit.</p>
+          
+          <div class="table-responsive rounded-3 border bg-white">
+            <table class="table table-striped table-hover mb-0 text-xs font-monospace">
+              <thead class="table-dark uppercase">
+                <tr>
+                  <th>PK Size</th>
+                  <th>Foot Length (CM)</th>
+                  <th>Fitting Recommendation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="fw-bold text-danger">PK Size 6</td><td>24.5 cm</td><td>Standard fit for casual/formal</td></tr>
+                <tr><td class="fw-bold text-danger">PK Size 7</td><td>25.5 cm</td><td>Standard fit</td></tr>
+                <tr><td class="fw-bold text-danger">PK Size 8</td><td>26.5 cm</td><td>Most common Pakistani size</td></tr>
+                <tr><td class="fw-bold text-danger">PK Size 9</td><td>27.5 cm</td><td>Standard fit</td></tr>
+                <tr><td class="fw-bold text-danger">PK Size 10</td><td>28.5 cm</td><td>Wide foot comfort</td></tr>
+                <tr><td class="fw-bold text-danger">PK Size 11</td><td>29.5 cm</td><td>Extra spacious fit</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mt-3 p-3 rounded-3 bg-light border text-xs text-muted d-flex gap-2">
+            <i class="bi bi-info-circle-fill text-warning fs-6"></i>
+            <div>
+              <strong>Khussa & Peshawari Tip:</strong> Handcrafted leather khussas stretch slightly after 2-3 wears. If you have wide feet, order 1 size up.
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer border-0 pt-0">
+          <button type="button" class="btn btn-secondary btn-sm rounded-3 w-100 font-bold" data-bs-dismiss="modal">Close Size Chart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SHOPPING CART OFFCANVAS ==================== -->
+  <div class="offcanvas offcanvas-end rounded-start-4" tabindex="-1" id="cartOffcanvas" aria-labelledby="cartOffcanvasLabel">
+    <div class="offcanvas-header border-bottom">
+      <h5 class="offcanvas-title fw-bold text-dark d-flex align-items-center gap-2" id="cartOffcanvasLabel">
+        <i class="bi bi-bag-fill" style="color: var(--pk-maroon);"></i> Your Shopping Bag
+      </h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column justify-content-between p-4">
+      
+      <!-- Cart Items List -->
+      <div id="cartItemsContainer" class="d-flex flex-column gap-3 overflow-y-auto">
+        <!-- Dynamic Cart Items -->
+      </div>
+
+      <!-- Empty Cart View -->
+      <div id="cartEmptyState" class="text-center py-5">
+        <i class="bi bi-bag-x fs-1 text-muted mb-2 d-block"></i>
+        <p class="text-muted text-sm">Your shopping bag is empty.</p>
+      </div>
+
+      <!-- Cart Footer & Order Calculation -->
+      <div id="cartSummaryFooter" class="pt-3 border-top d-none">
+        
+        <!-- Promo Coupon Code -->
+        <div class="input-group input-group-sm mb-3">
+          <input type="text" id="promoCodeInput" class="form-control text-xs" placeholder="Coupon Code (e.g. EID2026)">
+          <button class="btn btn-outline-dark font-bold text-xs" type="button" onclick="applyPromo()">Apply</button>
+        </div>
+
+        <div class="text-xs text-muted space-y-1 mb-3">
+          <div class="d-flex justify-content-between mb-1">
+            <span>Items Subtotal</span>
+            <span id="cartSubtotal" class="text-dark font-semibold">Rs. 0</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1">
+            <span>Delivery Fee (Pakistan)</span>
+            <span id="cartShipping" class="text-dark font-semibold">Rs. 250</span>
+          </div>
+          <div class="d-flex justify-content-between mb-1">
+            <span>Cash on Delivery (COD) Fee</span>
+            <span id="cartCodFee" class="text-dark font-semibold">Rs. 99</span>
+          </div>
+          <div id="discountRow" class="d-flex justify-content-between mb-1 text-success d-none">
+            <span>Festive Discount (10%)</span>
+            <span id="cartDiscount">-Rs. 0</span>
+          </div>
+          <div class="d-flex justify-content-between fs-6 font-bold text-dark pt-2 border-top">
+            <span>Grand Total</span>
+            <span id="cartTotal" class="text-danger">Rs. 0</span>
+          </div>
+        </div>
+
+        <button class="btn btn-maroon w-100 py-3 rounded-3 font-bold text-sm shadow" onclick="openCheckoutModal()">
+          Proceed to Checkout <i class="bi bi-arrow-right ms-1"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ==================== CHECKOUT MODAL ==================== -->
+  <div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content rounded-4 p-3">
+        <div class="modal-header border-bottom pb-3">
+          <h5 class="modal-title fw-bold text-dark d-flex align-items-center gap-2">
+            <i class="bi bi-shield-check text-danger" style="color: var(--pk-maroon);"></i> Complete Your Order
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pt-3">
+          <form id="checkoutForm" onsubmit="handlePaymentSubmit(event)">
             
-            <div class="focus-grid">
-                <div class="focus-card">
-                    <h3>Prompt Design</h3>
-                    <p>Writing clear, structured prompts and iterating on them like code — versioned and testable.</p>
+            <!-- Payment Method Selector -->
+            <div class="mb-4">
+              <label class="form-label text-xs font-bold uppercase text-muted">Select Payment Method</label>
+              <div class="row g-2">
+                <div class="col-6 col-sm-3">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="payCOD" value="cod" checked onchange="togglePaymentView('cod')">
+                  <label class="btn btn-outline-dark w-100 p-2.5 rounded-3 text-xs font-bold d-flex flex-column align-items-center gap-1" for="payCOD">
+                    <i class="bi bi-cash-stack fs-5 text-success"></i> Cash on Delivery
+                  </label>
                 </div>
-                <div class="focus-card">
-                    <h3>Task Automation</h3>
-                    <p>Chaining AI tools together to remove repetitive steps from real tasks.</p>
+                <div class="col-6 col-sm-3">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="payJazz" value="jazzcash" onchange="togglePaymentView('jazzcash')">
+                  <label class="btn btn-outline-dark w-100 p-2.5 rounded-3 text-xs font-bold d-flex flex-column align-items-center gap-1" for="payJazz">
+                    <i class="bi bi-phone-fill fs-5 text-danger"></i> JazzCash
+                  </label>
                 </div>
+                <div class="col-6 col-sm-3">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="payEasy" value="easypaisa" onchange="togglePaymentView('easypaisa')">
+                  <label class="btn btn-outline-dark w-100 p-2.5 rounded-3 text-xs font-bold d-flex flex-column align-items-center gap-1" for="payEasy">
+                    <i class="bi bi-wallet2 fs-5 text-success"></i> Easypaisa
+                  </label>
+                </div>
+                <div class="col-6 col-sm-3">
+                  <input type="radio" class="btn-check" name="paymentMethod" id="payBank" value="bank" onchange="togglePaymentView('bank')">
+                  <label class="btn btn-outline-dark w-100 p-2.5 rounded-3 text-xs font-bold d-flex flex-column align-items-center gap-1" for="payBank">
+                    <i class="bi bi-bank fs-5 text-primary"></i> Bank Transfer
+                  </label>
+                </div>
+              </div>
             </div>
-        </section>
-    </main>
 
-    <footer>
-        <p>&copy; 2026 AI Fluency Portfolio. All rights reserved.</p>
-    </footer>
+            <!-- Payment Notices -->
+            <div id="codNoticeSection" class="p-3 bg-light border rounded-3 text-xs text-muted mb-4">
+              <i class="bi bi-check-circle-fill text-success me-1"></i> Pay with cash upon delivery at your doorstep. Standard COD charge of <strong>Rs. 99</strong> applies.
+            </div>
+
+            <div id="mobileWalletSection" class="p-3 bg-light border rounded-3 text-xs mb-4 d-none">
+              <span class="font-bold text-dark d-block mb-1" id="walletTitle">Mobile Wallet Payment</span>
+              <p class="text-muted mb-2">Transfer order total to our official merchant account and enter your account phone number below:</p>
+              <div class="p-2 bg-white border rounded text-dark font-monospace mb-2">
+                Merchant Account: <strong>0300-1234567 (Kicks Vault PK)</strong>
+              </div>
+              <input type="text" id="walletNumber" class="form-control text-xs" placeholder="Enter your JazzCash / Easypaisa Mobile No.">
+            </div>
+
+            <!-- Shipping Details -->
+            <div class="space-y-3">
+              <h6 class="text-xs font-bold uppercase text-muted mb-3">Shipping & Customer Information</h6>
+              <div class="row g-3">
+                <div class="col-md-6">
+                  <label class="form-label text-xs text-muted">Full Name</label>
+                  <input type="text" id="custName" class="form-control text-xs" placeholder="Muhammad Ali" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-xs text-muted">WhatsApp / Phone Number</label>
+                  <input type="tel" id="custPhone" class="form-control text-xs" placeholder="0300 1234567" required>
+                </div>
+                <div class="col-12">
+                  <label class="form-label text-xs text-muted">Complete Street Address (House/Shop No, Area)</label>
+                  <input type="text" id="custAddress" class="form-control text-xs" placeholder="House 45, Saddar Bazaar, Near Auto Bhan Road" required>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-xs text-muted">City</label>
+                  <select id="custCity" class="form-select text-xs font-bold" onchange="handleCityChange()" required>
+                    <option value="Hyderabad" selected>Hyderabad (Free Delivery Over Rs. 5,000)</option>
+                    <option value="Karachi">Karachi</option>
+                    <option value="Lahore">Lahore</option>
+                    <option value="Islamabad">Islamabad</option>
+                    <option value="Rawalpindi">Rawalpindi</option>
+                    <option value="Multan">Multan</option>
+                    <option value="Faisalabad">Faisalabad</option>
+                    <option value="Peshawar">Peshawar</option>
+                    <option value="Quetta">Quetta</option>
+                    <option value="Other">Other City in Pakistan</option>
+                  </select>
+                </div>
+                <div class="col-md-6">
+                  <label class="form-label text-xs text-muted">Nearest Landmark (Optional)</label>
+                  <input type="text" id="custLandmark" class="form-control text-xs" placeholder="Opposite City Gate Hospital">
+                </div>
+              </div>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" id="paySubmitBtn" class="btn btn-maroon w-100 py-3 rounded-3 font-bold text-sm mt-4 shadow">
+              <i class="bi bi-bag-check-fill me-1"></i> Confirm Order
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== RECEIPT MODAL ==================== -->
+  <div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content rounded-4 p-4 text-center">
+        <div class="mb-3">
+          <div class="d-inline-flex align-items-center justify-content-center rounded-circle bg-success-subtle text-success p-3">
+            <i class="bi bi-check-circle-fill fs-1"></i>
+          </div>
+        </div>
+        <h4 class="fw-black text-dark mb-1">Order Summary Ready</h4>
+        <p class="text-muted text-xs mb-4">This is a summary only. No payment has been taken and the order has not been sent to the store yet. Tap the button below to send it on WhatsApp so the team can confirm it.</p>
+
+        <div class="p-3 bg-light border rounded-3 text-start font-monospace text-xs space-y-2 mb-4">
+          <div class="d-flex justify-content-between border-bottom pb-2">
+            <span class="text-muted">Reference:</span>
+            <span id="receiptId" class="text-danger font-bold">PK-98214</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">Customer:</span>
+            <span id="receiptName" class="text-dark">Muhammad Ali</span>
+          </div>
+          <div class="d-flex justify-content-between">
+            <span class="text-muted">City / Address:</span>
+            <span id="receiptCity" class="text-dark">Hyderabad</span>
+          </div>
+          <div id="receiptItemsList" class="pt-2 border-top">
+            <!-- Items list -->
+          </div>
+          <div class="d-flex justify-content-between pt-2 border-top fs-6 font-sans font-bold text-dark">
+            <span>Total Payable</span>
+            <span id="receiptTotal" class="text-danger">Rs. 0</span>
+          </div>
+        </div>
+
+        <a id="receiptWhatsAppBtn" href="#" target="_blank" rel="noopener" class="btn btn-whatsapp w-100 rounded-3 font-bold mb-2"><i class="bi bi-whatsapp me-1"></i> Send Order on WhatsApp</a>
+        <button type="button" class="btn btn-maroon w-100 rounded-3 font-bold" data-bs-dismiss="modal">
+          Continue Shopping
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== FLOATING WHATSAPP BUTTON ==================== -->
+  <a href="https://wa.me/923001234567?text=Hi%20Kicks%20Vault%20PK!%20I%20have%20an%20inquiry%20about%20shoe%20availability." target="_blank" class="floating-wa-btn" title="Chat on WhatsApp">
+    <i class="bi bi-whatsapp fs-3"></i>
+  </a>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="mt-5 border-top bg-white py-4 text-muted text-xs">
+    <div class="container-xl text-center">
+      <div class="d-flex align-items-center justify-content-center gap-2 mb-2">
+        <div class="rounded-2 text-white font-black px-2 py-0.5" style="background: var(--pk-maroon); font-weight: 900;">K</div>
+        <span class="fw-bold text-dark tracking-wider">KICKS VAULT PK</span>
+      </div>
+      <p class="mb-1">© 2026 Kicks Vault Pakistan. Authentic footwear from trusted Pakistani and international brands.</p>
+      <p class="text-muted mb-2">Saddar Bazaar & Auto Bahn Road, Hyderabad, Sindh, Pakistan.</p>
+      <nav class="footer-links d-flex justify-content-center flex-wrap gap-3" aria-label="Footer">
+        <a href="#" onclick="resetFilters(); window.scrollTo({top:0,behavior:'smooth'}); return false;"><i class="bi bi-grid me-1"></i>All Footwear</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#sizeGuideModal" onclick="return false;"><i class="bi bi-rulers me-1"></i>PK Size Chart</a>
+        <a href="https://wa.me/923001234567" target="_blank" rel="noopener"><i class="bi bi-whatsapp me-1"></i>WhatsApp</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript Logic -->
+  <script>
+    // --- MEN'S FOOTWEAR PRODUCTS ---
+// STATIC LOCAL IMAGES: put all photos inside an /images folder next to index.html
+const CATEGORY_LABELS = {"peshawari": "Peshawari Chappal", "khussa": "Handcrafted Khussa", "sneakers": "Sneakers", "formal": "Formal & Casual", "eid": "Eid & Wedding Specials", "servis": "Servis / Bata / Metro"};
+
+    const PRODUCTS = [
+      // ===== PESHAWARI CHAPPAL - data-category: 'peshawari' =====
+      {"id": "pesh-1", "brand": "Servis", "name": "Classic Brown Kaptaan Chappal", "tagline": "Authentic pure leather kaptaan chappal.", "price": 2999, "oldPrice": 4200, "rating": 4.6, "category": "peshawari", "colorway": "Classic Tan Brown", "badge": "HERITAGE", "image": "images/peshawari-1.jpg", "description": "Classic Brown Kaptaan Chappal in Classic Tan Brown. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-2", "brand": "Servis", "name": "Black Double Sole Peshawari", "tagline": "Heavy tyre rubber sole construction.", "price": 3499, "oldPrice": 4999, "rating": 4.6, "category": "peshawari", "colorway": "Jet Matte Black", "badge": "BESTSELLER", "image": "images/peshawari-2.jpg", "description": "Black Double Sole Peshawari in Jet Matte Black. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "pesh-3", "brand": "Bata", "name": "Tan Hand-Stitched Chappal", "tagline": "Lightweight summer Peshawari cut.", "price": 2499, "oldPrice": 3500, "rating": 4.6, "category": "peshawari", "colorway": "Honey Tan", "badge": "DAILY WEAR", "image": "images/peshawari-3.jpg", "description": "Tan Hand-Stitched Chappal in Honey Tan. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-4", "brand": "Servis", "name": "Royal Maroon Norozi Chappal", "tagline": "Wide front Norozi shape cut.", "price": 4299, "oldPrice": 5800, "rating": 4.5, "category": "peshawari", "colorway": "Royal Maroon", "badge": "ROYAL CUT", "image": "images/peshawari-4.jpg", "description": "Royal Maroon Norozi Chappal in Royal Maroon. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "pesh-5", "brand": "Metro", "name": "Charcoal Grey Kaptaan Chappal", "tagline": "Modern grey take on the Kaptaan style.", "price": 3199, "oldPrice": 4500, "rating": 4.9, "category": "peshawari", "colorway": "Charcoal Grey", "badge": "NEW", "image": "images/peshawari-5.jpg", "description": "Charcoal Grey Kaptaan Chappal in Charcoal Grey. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "pesh-6", "brand": "Bata", "name": "Chocolate Brown Charsadda Chappal", "tagline": "Charsadda-style flat stitched chappal.", "price": 3299, "oldPrice": 4600, "rating": 4.5, "category": "peshawari", "colorway": "Chocolate Brown", "badge": "POPULAR", "image": "images/peshawari-6.jpg", "description": "Chocolate Brown Charsadda Chappal in Chocolate Brown. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "pesh-7", "brand": "Servis", "name": "Camel Tan Peshawari Chappal", "tagline": "Soft camel leather for everyday wear.", "price": 2799, "oldPrice": 3900, "rating": 4.6, "category": "peshawari", "colorway": "Camel Tan", "badge": "DAILY WEAR", "image": "images/peshawari-7.jpg", "description": "Camel Tan Peshawari Chappal in Camel Tan. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-8", "brand": "Metro", "name": "Black Norozi Double Sole", "tagline": "Wide Norozi toe with double sole.", "price": 4599, "oldPrice": 6200, "rating": 4.5, "category": "peshawari", "colorway": "Matte Black", "badge": "PREMIUM", "image": "images/peshawari-8.jpg", "description": "Black Norozi Double Sole in Matte Black. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "pesh-9", "brand": "Servis", "name": "Antique Brown Kohati Chappal", "tagline": "Kohati bazaar inspired antique finish.", "price": 3799, "oldPrice": 5200, "rating": 4.6, "category": "peshawari", "colorway": "Antique Brown", "badge": "HERITAGE", "image": "images/peshawari-9.jpg", "description": "Antique Brown Kohati Chappal in Antique Brown. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-10", "brand": "Bata", "name": "Oxblood Red Kaptaan Chappal", "tagline": "Deep oxblood leather with brass buckle.", "price": 3599, "oldPrice": 4900, "rating": 4.7, "category": "peshawari", "colorway": "Oxblood Red", "badge": "LIMITED", "image": "images/peshawari-10.jpg", "description": "Oxblood Red Kaptaan Chappal in Oxblood Red. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "pesh-11", "brand": "Metro", "name": "Sand Beige Summer Peshawari", "tagline": "Breathable light beige summer pair.", "price": 2599, "oldPrice": 3600, "rating": 4.9, "category": "peshawari", "colorway": "Sand Beige", "badge": "SUMMER", "image": "images/peshawari-11.jpg", "description": "Sand Beige Summer Peshawari in Sand Beige. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "pesh-12", "brand": "Servis", "name": "Mustard Tan Hand-Cut Chappal", "tagline": "Hand-cut leather straps, hand-stitched.", "price": 3099, "oldPrice": 4300, "rating": 4.7, "category": "peshawari", "colorway": "Mustard Tan", "badge": "HANDMADE", "image": "images/peshawari-12.jpg", "description": "Mustard Tan Hand-Cut Chappal in Mustard Tan. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "pesh-13", "brand": "Bata", "name": "Jet Black Tyre Sole Peshawari", "tagline": "Tyre sole built for Pakistani streets.", "price": 3899, "oldPrice": 5400, "rating": 4.5, "category": "peshawari", "colorway": "Jet Black", "badge": "BESTSELLER", "image": "images/peshawari-13.jpg", "description": "Jet Black Tyre Sole Peshawari in Jet Black. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-14", "brand": "Metro", "name": "Dark Walnut Waziri Chappal", "tagline": "Waziri cut in rich walnut leather.", "price": 4199, "oldPrice": 5700, "rating": 4.9, "category": "peshawari", "colorway": "Dark Walnut", "badge": "PREMIUM", "image": "images/peshawari-14.jpg", "description": "Dark Walnut Waziri Chappal in Dark Walnut. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "pesh-15", "brand": "Servis", "name": "Premium Cowhide Peshawari", "tagline": "Full-grain cowhide, long lasting build.", "price": 5499, "oldPrice": 7500, "rating": 4.5, "category": "peshawari", "colorway": "Natural Cowhide", "badge": "PREMIUM", "image": "images/peshawari-15.jpg", "description": "Premium Cowhide Peshawari in Natural Cowhide. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "pesh-16", "brand": "Bata", "name": "Olive Brown Mardana Chappal", "tagline": "Simple mardana chappal for daily use.", "price": 2899, "oldPrice": 4000, "rating": 4.9, "category": "peshawari", "colorway": "Olive Brown", "badge": "DAILY WEAR", "image": "images/peshawari-16.jpg", "description": "Olive Brown Mardana Chappal in Olive Brown. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "pesh-17", "brand": "Metro", "name": "Black Gold-Stitch Peshawari", "tagline": "Black leather with gold thread stitching.", "price": 4999, "oldPrice": 6800, "rating": 4.6, "category": "peshawari", "colorway": "Black & Gold Stitch", "badge": "FESTIVE", "image": "images/peshawari-17.jpg", "description": "Black Gold-Stitch Peshawari in Black & Gold Stitch. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "pesh-18", "brand": "Servis", "name": "Royal Tan Norozi Deluxe", "tagline": "Deluxe Norozi with thick cushioned insole.", "price": 5999, "oldPrice": 8200, "rating": 4.9, "category": "peshawari", "colorway": "Royal Tan", "badge": "DELUXE", "image": "images/peshawari-18.jpg", "description": "Royal Tan Norozi Deluxe in Royal Tan. Traditional men's Peshawari chappal, hand-stitched by native craftsmen with a durable tyre-rubber outsole.", "sizesPK": [7, 8, 9, 10]},
+      // ===== HANDCRAFTED KHUSSA - data-category: 'khussa' =====
+      {"id": "khus-1", "brand": "Servis", "name": "Classic Brown Multani Khussa", "tagline": "Traditional Multani pointed-toe khussa.", "price": 2799, "oldPrice": 3900, "rating": 4.5, "category": "khussa", "colorway": "Classic Brown", "badge": "HERITAGE", "image": "images/khussa-1.jpg", "description": "Classic Brown Multani Khussa in Classic Brown. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "khus-2", "brand": "Metro", "name": "Black Zari Work Khussa", "tagline": "Fine zari embroidery on black leather.", "price": 3499, "oldPrice": 4800, "rating": 4.6, "category": "khussa", "colorway": "Black & Gold Zari", "badge": "BESTSELLER", "image": "images/khussa-2.jpg", "description": "Black Zari Work Khussa in Black & Gold Zari. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "khus-3", "brand": "Bata", "name": "Camel Tan Plain Khussa", "tagline": "Plain khussa for everyday kurta wear.", "price": 2499, "oldPrice": 3400, "rating": 4.8, "category": "khussa", "colorway": "Camel Tan", "badge": "DAILY WEAR", "image": "images/khussa-3.jpg", "description": "Camel Tan Plain Khussa in Camel Tan. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "khus-4", "brand": "Servis", "name": "Navy Blue Embroidered Khussa", "tagline": "Hand embroidered navy khussa.", "price": 3299, "oldPrice": 4500, "rating": 4.6, "category": "khussa", "colorway": "Navy Blue", "badge": "NEW", "image": "images/khussa-4.jpg", "description": "Navy Blue Embroidered Khussa in Navy Blue. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "khus-5", "brand": "Metro", "name": "Maroon Velvet Khussa", "tagline": "Soft velvet upper with gold border.", "price": 3999, "oldPrice": 5400, "rating": 4.5, "category": "khussa", "colorway": "Maroon Velvet", "badge": "FESTIVE", "image": "images/khussa-5.jpg", "description": "Maroon Velvet Khussa in Maroon Velvet. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "khus-6", "brand": "Bata", "name": "Golden Zari Groom Khussa", "tagline": "Rich golden zari for the groom.", "price": 4499, "oldPrice": 6000, "rating": 4.6, "category": "khussa", "colorway": "Golden Zari", "badge": "GROOM", "image": "images/khussa-6.jpg", "description": "Golden Zari Groom Khussa in Golden Zari. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "khus-7", "brand": "Servis", "name": "Cream Pearl Stitch Khussa", "tagline": "Cream khussa with pearl-style stitching.", "price": 3799, "oldPrice": 5200, "rating": 4.9, "category": "khussa", "colorway": "Cream & Pearl", "badge": "ROYAL CUT", "image": "images/khussa-7.jpg", "description": "Cream Pearl Stitch Khussa in Cream & Pearl. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "khus-8", "brand": "Metro", "name": "Chocolate Brown Pointed Toe Khussa", "tagline": "Deep brown, slim pointed toe.", "price": 3099, "oldPrice": 4200, "rating": 4.5, "category": "khussa", "colorway": "Chocolate Brown", "badge": "POPULAR", "image": "images/khussa-8.jpg", "description": "Chocolate Brown Pointed Toe Khussa in Chocolate Brown. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "khus-9", "brand": "Bata", "name": "Black Plain Formal Khussa", "tagline": "Clean black khussa for formal occasions.", "price": 2699, "oldPrice": 3700, "rating": 4.8, "category": "khussa", "colorway": "Matte Black", "badge": "FORMAL", "image": "images/khussa-9.jpg", "description": "Black Plain Formal Khussa in Matte Black. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "khus-10", "brand": "Servis", "name": "Bottle Green Embroidered Khussa", "tagline": "Bottle green with hand thread work.", "price": 3599, "oldPrice": 4900, "rating": 4.6, "category": "khussa", "colorway": "Bottle Green", "badge": "LIMITED", "image": "images/khussa-10.jpg", "description": "Bottle Green Embroidered Khussa in Bottle Green. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "khus-11", "brand": "Metro", "name": "Tan Mirror Work Khussa", "tagline": "Sindhi style mirror work on tan leather.", "price": 3899, "oldPrice": 5300, "rating": 4.9, "category": "khussa", "colorway": "Tan & Mirror Work", "badge": "HANDMADE", "image": "images/khussa-11.jpg", "description": "Tan Mirror Work Khussa in Tan & Mirror Work. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "khus-12", "brand": "Bata", "name": "Royal Blue Zari Khussa", "tagline": "Royal blue with golden zari.", "price": 3399, "oldPrice": 4600, "rating": 4.6, "category": "khussa", "colorway": "Royal Blue", "badge": "FESTIVE", "image": "images/khussa-12.jpg", "description": "Royal Blue Zari Khussa in Royal Blue. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "khus-13", "brand": "Servis", "name": "Mustard Gold Mehndi Khussa", "tagline": "Bright mustard khussa for Mayun & Mehndi.", "price": 3199, "oldPrice": 4400, "rating": 4.7, "category": "khussa", "colorway": "Mustard Gold", "badge": "MEHNDI", "image": "images/khussa-13.jpg", "description": "Mustard Gold Mehndi Khussa in Mustard Gold. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "khus-14", "brand": "Metro", "name": "Dark Brown Gold Thread Khussa", "tagline": "Gold thread work on dark brown leather.", "price": 4199, "oldPrice": 5700, "rating": 4.7, "category": "khussa", "colorway": "Dark Brown & Gold", "badge": "PREMIUM", "image": "images/khussa-14.jpg", "description": "Dark Brown Gold Thread Khussa in Dark Brown & Gold. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "khus-15", "brand": "Bata", "name": "Grey Suede Khussa", "tagline": "Soft suede finish in smoky grey.", "price": 2999, "oldPrice": 4100, "rating": 4.7, "category": "khussa", "colorway": "Smoke Grey", "badge": "NEW", "image": "images/khussa-15.jpg", "description": "Grey Suede Khussa in Smoke Grey. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "khus-16", "brand": "Servis", "name": "Burgundy Zari Khussa", "tagline": "Burgundy leather with heavy zari border.", "price": 4799, "oldPrice": 6500, "rating": 4.7, "category": "khussa", "colorway": "Burgundy", "badge": "PREMIUM", "image": "images/khussa-16.jpg", "description": "Burgundy Zari Khussa in Burgundy. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "khus-17", "brand": "Metro", "name": "Ivory White Nikkah Khussa", "tagline": "Ivory khussa made for Nikkah day.", "price": 5299, "oldPrice": 7200, "rating": 4.9, "category": "khussa", "colorway": "Ivory White", "badge": "NIKKAH", "image": "images/khussa-17.jpg", "description": "Ivory White Nikkah Khussa in Ivory White. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "khus-18", "brand": "Bata", "name": "Black Gold Designer Khussa", "tagline": "Designer khussa with full gold embroidery.", "price": 5799, "oldPrice": 7800, "rating": 4.7, "category": "khussa", "colorway": "Black & Gold", "badge": "DESIGNER", "image": "images/khussa-18.jpg", "description": "Black Gold Designer Khussa in Black & Gold. Handcrafted men's khussa with a pointed toe and flexible leather sole. Pairs beautifully with kurta shalwar.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      // ===== SNEAKERS - data-category: 'sneakers' =====
+      {"id": "snk-1", "brand": "Nike", "name": "Nike Court Vision Low White", "tagline": "Classic low-top court style sneaker.", "price": 7499, "oldPrice": 9999, "rating": 4.9, "category": "sneakers", "colorway": "White & Black", "badge": "BESTSELLER", "image": "images/sneaker-1.jpg", "description": "Nike Court Vision Low White in White & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "snk-2", "brand": "Nike", "name": "Nike Revolution Runner Black", "tagline": "Lightweight everyday running shoe.", "price": 5999, "oldPrice": 7999, "rating": 4.7, "category": "sneakers", "colorway": "Triple Black", "badge": "POPULAR", "image": "images/sneaker-2.jpg", "description": "Nike Revolution Runner Black in Triple Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-3", "brand": "Nike", "name": "Nike Downshifter Grey Running Shoe", "tagline": "Cushioned road running trainer.", "price": 6499, "oldPrice": 8499, "rating": 4.5, "category": "sneakers", "colorway": "Grey & Volt", "badge": "RUNNING", "image": "images/sneaker-3.jpg", "description": "Nike Downshifter Grey Running Shoe in Grey & Volt. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "snk-4", "brand": "Nike", "name": "Nike Air Max Street Navy", "tagline": "Visible air cushioning for all-day comfort.", "price": 9499, "oldPrice": 11999, "rating": 4.7, "category": "sneakers", "colorway": "Navy & White", "badge": "PREMIUM", "image": "images/sneaker-4.jpg", "description": "Nike Air Max Street Navy in Navy & White. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-5", "brand": "Nike", "name": "Nike Flex Trainer Red Black", "tagline": "Flexible gym and training sneaker.", "price": 5499, "oldPrice": 7299, "rating": 4.7, "category": "sneakers", "colorway": "Red & Black", "badge": "GYM", "image": "images/sneaker-5.jpg", "description": "Nike Flex Trainer Red Black in Red & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "snk-6", "brand": "Nike", "name": "Nike Pegasus Style Blue Runner", "tagline": "Responsive daily runner in blue.", "price": 8999, "oldPrice": 11499, "rating": 4.7, "category": "sneakers", "colorway": "Royal Blue", "badge": "NEW", "image": "images/sneaker-6.jpg", "description": "Nike Pegasus Style Blue Runner in Royal Blue. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "snk-7", "brand": "Adidas", "name": "Adidas Gazelle Classic Navy", "tagline": "Retro suede terrace classic.", "price": 8499, "oldPrice": 10999, "rating": 4.9, "category": "sneakers", "colorway": "Navy & Gum", "badge": "RETRO", "image": "images/sneaker-7.jpg", "description": "Adidas Gazelle Classic Navy in Navy & Gum. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "snk-8", "brand": "Adidas", "name": "Adidas Superstar Style White Black", "tagline": "Shell-toe icon with rubber cupsole.", "price": 8999, "oldPrice": 11499, "rating": 4.8, "category": "sneakers", "colorway": "White & Black", "badge": "ICONIC", "image": "images/sneaker-8.jpg", "description": "Adidas Superstar Style White Black in White & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-9", "brand": "Adidas", "name": "Adidas Duramo Running Grey", "tagline": "Everyday cushioned running shoe.", "price": 5999, "oldPrice": 7999, "rating": 4.7, "category": "sneakers", "colorway": "Grey & White", "badge": "RUNNING", "image": "images/sneaker-9.jpg", "description": "Adidas Duramo Running Grey in Grey & White. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "snk-10", "brand": "Adidas", "name": "Adidas Campus Retro Green", "tagline": "Retro suede campus silhouette.", "price": 7999, "oldPrice": 9999, "rating": 4.8, "category": "sneakers", "colorway": "Forest Green", "badge": "RETRO", "image": "images/sneaker-10.jpg", "description": "Adidas Campus Retro Green in Forest Green. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-11", "brand": "Adidas", "name": "Adidas Lite Racer Black", "tagline": "Light slip-on style trainer.", "price": 4999, "oldPrice": 6699, "rating": 4.8, "category": "sneakers", "colorway": "Core Black", "badge": "DAILY WEAR", "image": "images/sneaker-11.jpg", "description": "Adidas Lite Racer Black in Core Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "snk-12", "brand": "Adidas", "name": "Adidas Samba Style Cream", "tagline": "Slim terrace trainer with T-toe.", "price": 9499, "oldPrice": 11999, "rating": 4.6, "category": "sneakers", "colorway": "Cream & Black", "badge": "TRENDING", "image": "images/sneaker-12.jpg", "description": "Adidas Samba Style Cream in Cream & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "snk-13", "brand": "Puma", "name": "Puma Smash V2 White", "tagline": "Clean court-inspired white sneaker.", "price": 4499, "oldPrice": 5999, "rating": 4.5, "category": "sneakers", "colorway": "White & Black", "badge": "VALUE", "image": "images/sneaker-13.jpg", "description": "Puma Smash V2 White in White & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "snk-14", "brand": "Puma", "name": "Puma Softride Runner Black", "tagline": "Soft cushioned running sneaker.", "price": 5499, "oldPrice": 7299, "rating": 4.9, "category": "sneakers", "colorway": "Black & Silver", "badge": "RUNNING", "image": "images/sneaker-14.jpg", "description": "Puma Softride Runner Black in Black & Silver. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-15", "brand": "Puma", "name": "Puma Rebound Mid Red", "tagline": "Mid-top street sneaker in red.", "price": 6999, "oldPrice": 8999, "rating": 4.5, "category": "sneakers", "colorway": "Red & White", "badge": "HIGH TOP", "image": "images/sneaker-15.jpg", "description": "Puma Rebound Mid Red in Red & White. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "snk-16", "brand": "Puma", "name": "Puma Suede Classic Blue", "tagline": "The classic suede in deep blue.", "price": 7999, "oldPrice": 9999, "rating": 4.5, "category": "sneakers", "colorway": "Peacoat Blue", "badge": "ICONIC", "image": "images/sneaker-16.jpg", "description": "Puma Suede Classic Blue in Peacoat Blue. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "snk-17", "brand": "Puma", "name": "Puma Anzarun Lite Grey", "tagline": "Lightweight lace-up trainer.", "price": 3999, "oldPrice": 5499, "rating": 4.6, "category": "sneakers", "colorway": "Grey & Black", "badge": "NEW", "image": "images/sneaker-17.jpg", "description": "Puma Anzarun Lite Grey in Grey & Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "snk-18", "brand": "Puma", "name": "Puma Disc Slip-On Black", "tagline": "Easy slip-on sneaker for daily use.", "price": 2999, "oldPrice": 4199, "rating": 4.9, "category": "sneakers", "colorway": "Jet Black", "badge": "DAILY WEAR", "image": "images/sneaker-18.jpg", "description": "Puma Disc Slip-On Black in Jet Black. Men's sneaker with a cushioned midsole and durable outsole for walking, running and everyday street wear.", "sizesPK": [7, 8, 9, 10, 11]},
+      // ===== FORMAL & CASUAL - data-category: 'formal' =====
+      {"id": "form-1", "brand": "Servis", "name": "Black Leather Oxford", "tagline": "Polished black Oxford for the office.", "price": 4499, "oldPrice": 5999, "rating": 4.7, "category": "formal", "colorway": "Classic Black", "badge": "OFFICE", "image": "images/formal-1.jpg", "description": "Black Leather Oxford in Classic Black. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "form-2", "brand": "Bata", "name": "Brown Derby Formal Shoe", "tagline": "Open-lace derby in brown leather.", "price": 3999, "oldPrice": 5400, "rating": 4.7, "category": "formal", "colorway": "Rich Brown", "badge": "OFFICE", "image": "images/formal-2.jpg", "description": "Brown Derby Formal Shoe in Rich Brown. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "form-3", "brand": "Metro", "name": "Tan Penny Loafer", "tagline": "Slip-on penny loafer for smart casual.", "price": 4299, "oldPrice": 5700, "rating": 4.7, "category": "formal", "colorway": "Tan", "badge": "POPULAR", "image": "images/formal-3.jpg", "description": "Tan Penny Loafer in Tan. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "form-4", "brand": "Servis", "name": "Black Monk Strap", "tagline": "Single buckle monk strap shoe.", "price": 5499, "oldPrice": 7200, "rating": 4.9, "category": "formal", "colorway": "Black", "badge": "PREMIUM", "image": "images/formal-4.jpg", "description": "Black Monk Strap in Black. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "form-5", "brand": "Bata", "name": "Classic Black Slip-On Loafer", "tagline": "Easy slip-on loafer for work.", "price": 3499, "oldPrice": 4700, "rating": 4.8, "category": "formal", "colorway": "Black", "badge": "DAILY WEAR", "image": "images/formal-5.jpg", "description": "Classic Black Slip-On Loafer in Black. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "form-6", "brand": "Metro", "name": "Brown Brogue Wingtip", "tagline": "Wingtip brogue with perforation detail.", "price": 5999, "oldPrice": 7900, "rating": 4.7, "category": "formal", "colorway": "Brown", "badge": "PREMIUM", "image": "images/formal-6.jpg", "description": "Brown Brogue Wingtip in Brown. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "form-7", "brand": "Servis", "name": "Black Chelsea Boot", "tagline": "Elastic-side Chelsea boot in black.", "price": 6499, "oldPrice": 8500, "rating": 4.7, "category": "formal", "colorway": "Black", "badge": "BOOTS", "image": "images/formal-7.jpg", "description": "Black Chelsea Boot in Black. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "form-8", "brand": "Bata", "name": "Tan Driving Moccasin", "tagline": "Soft driving moccasin for casual days.", "price": 3299, "oldPrice": 4400, "rating": 4.6, "category": "formal", "colorway": "Tan", "badge": "CASUAL", "image": "images/formal-8.jpg", "description": "Tan Driving Moccasin in Tan. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "form-9", "brand": "Metro", "name": "Navy Suede Loafer", "tagline": "Navy suede loafer for weekend wear.", "price": 4799, "oldPrice": 6300, "rating": 4.5, "category": "formal", "colorway": "Navy Suede", "badge": "NEW", "image": "images/formal-9.jpg", "description": "Navy Suede Loafer in Navy Suede. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "form-10", "brand": "Servis", "name": "Cognac Tassel Loafer", "tagline": "Tassel loafer in warm cognac.", "price": 4999, "oldPrice": 6600, "rating": 4.5, "category": "formal", "colorway": "Cognac", "badge": "CLASSIC", "image": "images/formal-10.jpg", "description": "Cognac Tassel Loafer in Cognac. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "form-11", "brand": "Bata", "name": "Sand Suede Desert Boot", "tagline": "Lace-up desert boot in sand suede.", "price": 4199, "oldPrice": 5600, "rating": 4.9, "category": "formal", "colorway": "Sand", "badge": "CASUAL", "image": "images/formal-11.jpg", "description": "Sand Suede Desert Boot in Sand. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "form-12", "brand": "Metro", "name": "Black Patent Tuxedo Shoe", "tagline": "Glossy patent shoe for black-tie nights.", "price": 6999, "oldPrice": 9200, "rating": 4.8, "category": "formal", "colorway": "Black Patent", "badge": "EVENING", "image": "images/formal-12.jpg", "description": "Black Patent Tuxedo Shoe in Black Patent. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "form-13", "brand": "Servis", "name": "Brown Double Monk Strap", "tagline": "Double buckle monk strap in brown.", "price": 5799, "oldPrice": 7600, "rating": 4.9, "category": "formal", "colorway": "Brown", "badge": "PREMIUM", "image": "images/formal-13.jpg", "description": "Brown Double Monk Strap in Brown. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "form-14", "brand": "Bata", "name": "Charcoal Casual Lace-Up", "tagline": "Everyday casual lace-up shoe.", "price": 3799, "oldPrice": 5000, "rating": 4.6, "category": "formal", "colorway": "Charcoal", "badge": "CASUAL", "image": "images/formal-14.jpg", "description": "Charcoal Casual Lace-Up in Charcoal. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "form-15", "brand": "Metro", "name": "Dark Brown Cap-Toe Oxford", "tagline": "Cap-toe Oxford for boardroom days.", "price": 7499, "oldPrice": 9800, "rating": 4.5, "category": "formal", "colorway": "Dark Brown", "badge": "EXECUTIVE", "image": "images/formal-15.jpg", "description": "Dark Brown Cap-Toe Oxford in Dark Brown. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "form-16", "brand": "Servis", "name": "Walnut Chukka Boot", "tagline": "Ankle-high chukka in walnut leather.", "price": 6799, "oldPrice": 8900, "rating": 4.5, "category": "formal", "colorway": "Walnut", "badge": "BOOTS", "image": "images/formal-16.jpg", "description": "Walnut Chukka Boot in Walnut. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "form-17", "brand": "Bata", "name": "Black Executive Derby", "tagline": "Smart black derby for executives.", "price": 4599, "oldPrice": 6100, "rating": 4.5, "category": "formal", "colorway": "Black", "badge": "OFFICE", "image": "images/formal-17.jpg", "description": "Black Executive Derby in Black. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "form-18", "brand": "Metro", "name": "Burgundy Leather Loafer", "tagline": "Burgundy leather loafer with cushioned sole.", "price": 5299, "oldPrice": 7000, "rating": 4.9, "category": "formal", "colorway": "Burgundy", "badge": "LIMITED", "image": "images/formal-18.jpg", "description": "Burgundy Leather Loafer in Burgundy. Men's formal and casual leather footwear with a cushioned insole, made for office days and smart occasions.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      // ===== EID & WEDDING SPECIALS - data-category: 'eid' =====
+      {"id": "eid-1", "brand": "Metro", "name": "Golden Groom Sherwani Khussa", "tagline": "Statement khussa to wear with sherwani.", "price": 8999, "oldPrice": 11999, "rating": 4.5, "category": "eid", "colorway": "Gold & Cream", "badge": "GROOM", "image": "images/eid-1.jpg", "description": "Golden Groom Sherwani Khussa in Gold & Cream. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-2", "brand": "Servis", "name": "Eid Special Gold Zari Peshawari", "tagline": "Peshawari chappal with gold zari trim.", "price": 5499, "oldPrice": 7500, "rating": 4.5, "category": "eid", "colorway": "Tan & Gold Zari", "badge": "EID SPECIAL", "image": "images/eid-2.jpg", "description": "Eid Special Gold Zari Peshawari in Tan & Gold Zari. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "eid-3", "brand": "Bata", "name": "Royal Cream Nikkah Loafer", "tagline": "Cream loafer for the Nikkah ceremony.", "price": 6299, "oldPrice": 8300, "rating": 4.6, "category": "eid", "colorway": "Royal Cream", "badge": "NIKKAH", "image": "images/eid-3.jpg", "description": "Royal Cream Nikkah Loafer in Royal Cream. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-4", "brand": "Metro", "name": "Maroon Velvet Barat Khussa", "tagline": "Velvet khussa with heavy gold work.", "price": 7499, "oldPrice": 9800, "rating": 4.9, "category": "eid", "colorway": "Maroon Velvet", "badge": "BARAT", "image": "images/eid-4.jpg", "description": "Maroon Velvet Barat Khussa in Maroon Velvet. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "eid-5", "brand": "Servis", "name": "Black Embroidered Eid Khussa", "tagline": "Black khussa with Eid embroidery.", "price": 4999, "oldPrice": 6700, "rating": 4.8, "category": "eid", "colorway": "Black & Gold", "badge": "EID SPECIAL", "image": "images/eid-5.jpg", "description": "Black Embroidered Eid Khussa in Black & Gold. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "eid-6", "brand": "Bata", "name": "Ivory Pearl Wedding Moccasin", "tagline": "Ivory moccasin with pearl-style detail.", "price": 6999, "oldPrice": 9200, "rating": 4.5, "category": "eid", "colorway": "Ivory & Pearl", "badge": "WEDDING", "image": "images/eid-6.jpg", "description": "Ivory Pearl Wedding Moccasin in Ivory & Pearl. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "eid-7", "brand": "Metro", "name": "Gold Stitch Mehndi Chappal", "tagline": "Festive chappal for Mehndi functions.", "price": 4299, "oldPrice": 5800, "rating": 4.5, "category": "eid", "colorway": "Tan & Gold Stitch", "badge": "MEHNDI", "image": "images/eid-7.jpg", "description": "Gold Stitch Mehndi Chappal in Tan & Gold Stitch. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-8", "brand": "Servis", "name": "Mustard Mayun Khussa", "tagline": "Bright yellow khussa for Mayun night.", "price": 3999, "oldPrice": 5400, "rating": 4.6, "category": "eid", "colorway": "Mustard Yellow", "badge": "MAYUN", "image": "images/eid-8.jpg", "description": "Mustard Mayun Khussa in Mustard Yellow. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "eid-9", "brand": "Bata", "name": "Black Sherwani Formal Shoe", "tagline": "Formal black shoe for sherwani look.", "price": 7999, "oldPrice": 10500, "rating": 4.9, "category": "eid", "colorway": "Black", "badge": "GROOM", "image": "images/eid-9.jpg", "description": "Black Sherwani Formal Shoe in Black. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-10", "brand": "Metro", "name": "Emerald Green Zari Khussa", "tagline": "Emerald khussa with zari border.", "price": 5999, "oldPrice": 7900, "rating": 4.5, "category": "eid", "colorway": "Emerald Green", "badge": "FESTIVE", "image": "images/eid-10.jpg", "description": "Emerald Green Zari Khussa in Emerald Green. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "eid-11", "brand": "Servis", "name": "Eid Day Camel Tan Chappal", "tagline": "Comfortable chappal for Eid day visits.", "price": 3499, "oldPrice": 4700, "rating": 4.7, "category": "eid", "colorway": "Camel Tan", "badge": "EID SPECIAL", "image": "images/eid-11.jpg", "description": "Eid Day Camel Tan Chappal in Camel Tan. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "eid-12", "brand": "Bata", "name": "Navy Embroidered Walima Loafer", "tagline": "Navy loafer with gold embroidery.", "price": 6499, "oldPrice": 8600, "rating": 4.9, "category": "eid", "colorway": "Navy & Gold", "badge": "WALIMA", "image": "images/eid-12.jpg", "description": "Navy Embroidered Walima Loafer in Navy & Gold. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "eid-13", "brand": "Metro", "name": "Antique Gold Barat Peshawari", "tagline": "Antique gold Peshawari for Barat day.", "price": 8499, "oldPrice": 11200, "rating": 4.9, "category": "eid", "colorway": "Antique Gold", "badge": "BARAT", "image": "images/eid-13.jpg", "description": "Antique Gold Barat Peshawari in Antique Gold. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-14", "brand": "Servis", "name": "Burgundy Velvet Wedding Loafer", "tagline": "Velvet loafer for wedding evenings.", "price": 6799, "oldPrice": 8900, "rating": 4.8, "category": "eid", "colorway": "Burgundy Velvet", "badge": "WEDDING", "image": "images/eid-14.jpg", "description": "Burgundy Velvet Wedding Loafer in Burgundy Velvet. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "eid-15", "brand": "Bata", "name": "White Eid Special Khussa", "tagline": "Crisp white khussa for Eid morning.", "price": 3799, "oldPrice": 5100, "rating": 4.9, "category": "eid", "colorway": "Pure White", "badge": "EID SPECIAL", "image": "images/eid-15.jpg", "description": "White Eid Special Khussa in Pure White. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "eid-16", "brand": "Metro", "name": "Royal Blue Zari Groom Khussa", "tagline": "Royal blue groom khussa with zari.", "price": 7299, "oldPrice": 9600, "rating": 4.5, "category": "eid", "colorway": "Royal Blue", "badge": "GROOM", "image": "images/eid-16.jpg", "description": "Royal Blue Zari Groom Khussa in Royal Blue. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "eid-17", "brand": "Servis", "name": "Cream Zardozi Sherwani Khussa", "tagline": "Full zardozi work, made for grooms.", "price": 9499, "oldPrice": 12500, "rating": 4.8, "category": "eid", "colorway": "Cream & Zardozi", "badge": "ROYAL CUT", "image": "images/eid-17.jpg", "description": "Cream Zardozi Sherwani Khussa in Cream & Zardozi. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "eid-18", "brand": "Bata", "name": "Black Gold Premium Wedding Shoe", "tagline": "Our top premium wedding shoe.", "price": 9999, "oldPrice": 13000, "rating": 4.7, "category": "eid", "colorway": "Black & Gold", "badge": "PREMIUM", "image": "images/eid-18.jpg", "description": "Black Gold Premium Wedding Shoe in Black & Gold. Men's festive footwear made for Eid, Nikkah, Mehndi and Barat. Rich finishing and a comfortable all-day fit.", "sizesPK": [7, 8, 9, 10]},
+      // ===== SERVIS / BATA / METRO - data-category: 'servis' =====
+      {"id": "serv-1", "brand": "Servis", "name": "Servis Comfort Leather Sandal Brown", "tagline": "Men's open leather sandal with soft footbed.", "price": 2499, "oldPrice": 3299, "rating": 4.5, "category": "servis", "colorway": "Brown", "badge": "VALUE", "image": "images/servis-1.jpg", "description": "Servis Comfort Leather Sandal Brown in Brown. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "serv-2", "brand": "Servis", "name": "Servis Black Casual Lace-Up", "tagline": "Everyday black lace-up shoe.", "price": 3299, "oldPrice": 4300, "rating": 4.9, "category": "servis", "colorway": "Black", "badge": "POPULAR", "image": "images/servis-2.jpg", "description": "Servis Black Casual Lace-Up in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "serv-3", "brand": "Servis", "name": "Servis Daily Wear Slip-On Navy", "tagline": "Easy navy slip-on for daily wear.", "price": 2699, "oldPrice": 3500, "rating": 4.9, "category": "servis", "colorway": "Navy", "badge": "DAILY WEAR", "image": "images/servis-3.jpg", "description": "Servis Daily Wear Slip-On Navy in Navy. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "serv-4", "brand": "Servis", "name": "Servis Jogger Sports Shoe Grey", "tagline": "Light jogger-style sports shoe.", "price": 3499, "oldPrice": 4500, "rating": 4.6, "category": "servis", "colorway": "Grey", "badge": "SPORTS", "image": "images/servis-4.jpg", "description": "Servis Jogger Sports Shoe Grey in Grey. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "serv-5", "brand": "Servis", "name": "Servis Open Toe Leather Slipper Tan", "tagline": "Soft leather slipper for daily use.", "price": 2599, "oldPrice": 3400, "rating": 4.8, "category": "servis", "colorway": "Tan", "badge": "HOME & MOSQUE", "image": "images/servis-5.jpg", "description": "Servis Open Toe Leather Slipper Tan in Tan. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "serv-6", "brand": "Servis", "name": "Servis Executive Comfort Loafer Black", "tagline": "Cushioned loafer for long office hours.", "price": 3999, "oldPrice": 5200, "rating": 4.7, "category": "servis", "colorway": "Black", "badge": "OFFICE", "image": "images/servis-6.jpg", "description": "Servis Executive Comfort Loafer Black in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "serv-7", "brand": "Bata", "name": "Bata Comfit Walking Shoe Black", "tagline": "Cushioned walking shoe with Comfit insole.", "price": 3799, "oldPrice": 4900, "rating": 4.9, "category": "servis", "colorway": "Black", "badge": "COMFORT", "image": "images/servis-7.jpg", "description": "Bata Comfit Walking Shoe Black in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "serv-8", "brand": "Bata", "name": "Bata Power Sports Runner Blue", "tagline": "Sporty runner for jogging and gym.", "price": 3299, "oldPrice": 4400, "rating": 4.5, "category": "servis", "colorway": "Blue & Grey", "badge": "SPORTS", "image": "images/servis-8.jpg", "description": "Bata Power Sports Runner Blue in Blue & Grey. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "serv-9", "brand": "Bata", "name": "Bata Casual Leather Sandal Brown", "tagline": "Strappy brown sandal for summer.", "price": 2799, "oldPrice": 3700, "rating": 4.5, "category": "servis", "colorway": "Brown", "badge": "SUMMER", "image": "images/servis-9.jpg", "description": "Bata Casual Leather Sandal Brown in Brown. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "serv-10", "brand": "Bata", "name": "Bata Canvas Casual Sneaker White", "tagline": "Simple white canvas sneaker.", "price": 2499, "oldPrice": 3200, "rating": 4.7, "category": "servis", "colorway": "White", "badge": "VALUE", "image": "images/servis-10.jpg", "description": "Bata Canvas Casual Sneaker White in White. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "serv-11", "brand": "Bata", "name": "Bata Premium Leather Slipper Black", "tagline": "Premium slipper with padded sole.", "price": 2999, "oldPrice": 3900, "rating": 4.6, "category": "servis", "colorway": "Black", "badge": "DAILY WEAR", "image": "images/servis-11.jpg", "description": "Bata Premium Leather Slipper Black in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "serv-12", "brand": "Bata", "name": "Bata Formal Lace-Up Classic Brown", "tagline": "Classic brown formal lace-up.", "price": 4299, "oldPrice": 5600, "rating": 4.7, "category": "servis", "colorway": "Brown", "badge": "OFFICE", "image": "images/servis-12.jpg", "description": "Bata Formal Lace-Up Classic Brown in Brown. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "serv-13", "brand": "Metro", "name": "Metro Casual Loafer Tan", "tagline": "Casual tan loafer for weekends.", "price": 3699, "oldPrice": 4800, "rating": 4.8, "category": "servis", "colorway": "Tan", "badge": "POPULAR", "image": "images/servis-13.jpg", "description": "Metro Casual Loafer Tan in Tan. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10]},
+      {"id": "serv-14", "brand": "Metro", "name": "Metro Soft Sole Slipper Black", "tagline": "Soft sole black slipper.", "price": 2599, "oldPrice": 3400, "rating": 4.6, "category": "servis", "colorway": "Black", "badge": "DAILY WEAR", "image": "images/servis-14.jpg", "description": "Metro Soft Sole Slipper Black in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10, 11]},
+      {"id": "serv-15", "brand": "Metro", "name": "Metro Sporty Slip-On Grey", "tagline": "Sporty slip-on in grey mesh.", "price": 3199, "oldPrice": 4200, "rating": 4.9, "category": "servis", "colorway": "Grey", "badge": "SPORTS", "image": "images/servis-15.jpg", "description": "Metro Sporty Slip-On Grey in Grey. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [7, 8, 9, 10]},
+      {"id": "serv-16", "brand": "Metro", "name": "Metro Leather Sandal Double Strap Brown", "tagline": "Double strap leather sandal.", "price": 3399, "oldPrice": 4400, "rating": 4.5, "category": "servis", "colorway": "Brown", "badge": "SUMMER", "image": "images/servis-16.jpg", "description": "Metro Leather Sandal Double Strap Brown in Brown. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]},
+      {"id": "serv-17", "brand": "Metro", "name": "Metro Weekend Suede Moccasin Navy", "tagline": "Navy suede moccasin for weekends.", "price": 3899, "oldPrice": 5000, "rating": 4.6, "category": "servis", "colorway": "Navy Suede", "badge": "NEW", "image": "images/servis-17.jpg", "description": "Metro Weekend Suede Moccasin Navy in Navy Suede. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [8, 9, 10, 11]},
+      {"id": "serv-18", "brand": "Metro", "name": "Metro Daily Comfort Lace-Up Black", "tagline": "All-day comfort lace-up in black.", "price": 4199, "oldPrice": 5400, "rating": 4.8, "category": "servis", "colorway": "Black", "badge": "COMFORT", "image": "images/servis-18.jpg", "description": "Metro Daily Comfort Lace-Up Black in Black. Men's everyday footwear from trusted Pakistani brands. Comfortable, durable and easy on the pocket.", "sizesPK": [6, 7, 8, 9, 10, 11]}
+    ];
+
+    // --- LOCAL PLACEHOLDER (inline SVG, no online link) shown only if an image file is missing ---
+    function imgFallback(el, id) {
+      el.onerror = null;
+      const p = PRODUCTS.find(x => x.id === id);
+      if (!p) return;
+      const words = p.name.split(' '); const lines = []; let line = '';
+      words.forEach(w => { if ((line + ' ' + w).trim().length > 20) { lines.push(line.trim()); line = w; } else { line += ' ' + w; } });
+      lines.push(line.trim());
+      const esc = t => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+      const tspans = lines.map((l, i) => `<tspan x="300" dy="${i === 0 ? 0 : 38}">${esc(l)}</tspan>`).join('');
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><rect width="600" height="600" fill="#f1f5f9"/><rect x="20" y="20" width="560" height="560" rx="24" fill="none" stroke="#800020" stroke-width="3" stroke-dasharray="10 8"/><text x="300" y="230" text-anchor="middle" font-family="Arial" font-size="26" font-weight="700" fill="#800020">${esc(p.brand.toUpperCase())}</text><text x="300" y="290" text-anchor="middle" font-family="Arial" font-size="34" font-weight="700" fill="#0f172a">${tspans}</text><text x="300" y="480" text-anchor="middle" font-family="monospace" font-size="22" fill="#64748b">${esc(p.image)}</text></svg>`;
+      el.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+    }
+
+    // --- STATE MANAGEMENT ---
+    let currentCategory = 'All';
+    let currentBrand = 'All';
+    let currentSearch = '';
+    let currentSort = 'featured';
+    let cart = [];
+    let appliedPromo = false;
+    let isHyderabad = true;
+    let selectedModalSize = null;
+
+    // --- DOM ELEMENTS ---
+    const productGrid = document.getElementById('productGrid');
+    const emptyState = document.getElementById('emptyState');
+    const productCount = document.getElementById('productCount');
+    const cartCountBadge = document.getElementById('cartCountBadge');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartEmptyState = document.getElementById('cartEmptyState');
+    const cartSummaryFooter = document.getElementById('cartSummaryFooter');
+
+    // --- RENDER PRODUCTS ---
+    function renderProducts() {
+      let filtered = PRODUCTS.filter(p => {
+        const matchesCategory = (currentCategory === 'All') || (p.category === currentCategory);
+        const matchesBrand = (currentBrand === 'All') || (p.brand.toLowerCase() === currentBrand.toLowerCase());
+        const matchesSearch = p.name.toLowerCase().includes(currentSearch.toLowerCase()) || 
+                              p.brand.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                              p.tagline.toLowerCase().includes(currentSearch.toLowerCase());
+        return matchesCategory && matchesBrand && matchesSearch;
+      });
+
+      // Sorting
+      if (currentSort === 'price-low') {
+        filtered.sort((a, b) => a.price - b.price);
+      } else if (currentSort === 'price-high') {
+        filtered.sort((a, b) => b.price - a.price);
+      } else if (currentSort === 'rating') {
+        filtered.sort((a, b) => b.rating - a.rating);
+      }
+
+
+      if (filtered.length === 0) {
+        productGrid.innerHTML = '';
+        emptyState.classList.remove('d-none');
+        return;
+      }
+
+      emptyState.classList.add('d-none');
+      
+      productGrid.innerHTML = filtered.map(product => {
+        const discountPct = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+        return `
+          <div class="col" data-category="${product.category}">
+            <div class="product-card h-100 d-flex flex-column justify-content-between">
+              <div>
+                <div class="product-img-wrapper cursor-pointer" role="button" tabindex="0" aria-label="View details for ${product.name}" onclick="openProductModal('${product.id}')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openProductModal('${product.id}')}">
+                  <img 
+                    src="${product.image}" 
+                    alt="${product.name}" 
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='images/placeholder.jpg'"
+                  >
+                  <span class="badge badge-sale position-absolute top-0 start-0 m-3 rounded-pill text-xs font-bold px-2.5 py-1">
+                    ${discountPct}% OFF
+                  </span>
+                  <button class="btn-wishlist" aria-label="Add ${product.name} to wishlist" aria-pressed="false" onclick="event.stopPropagation(); toggleWishlist(this)">
+                    <i class="bi bi-heart"></i>
+                  </button>
+                </div>
+                <div class="p-3">
+                  <div class="d-flex align-items-center justify-content-between text-xs text-muted font-bold mb-1">
+                    <span style="color: var(--pk-maroon);">${product.brand.toUpperCase()}</span>
+                    <span class="text-warning"><i class="bi bi-star-fill"></i> ${product.rating}</span>
+                  </div>
+                  <h3 class="fs-6 fw-bold text-dark text-truncate mb-1 cursor-pointer" onclick="openProductModal('${product.id}')">
+                    ${product.name}
+                  </h3>
+                  <p class="text-muted text-xs mb-2 text-truncate">${product.tagline}</p>
+                  
+                  <div class="d-flex align-items-center gap-1 overflow-x-auto no-scrollbar mb-3">
+                    <span class="text-xs text-muted me-1">Size:</span>
+                    ${product.sizesPK.map(s => `
+                      <button class="size-btn" onclick="event.stopPropagation(); addToCart('${product.id}', ${s})">${s}</button>
+                    `).join('')}
+                  </div>
+                </div>
+              </div>
+
+              <div class="p-3 pt-0 border-top mt-auto">
+                <div class="d-flex align-items-baseline justify-content-between my-2">
+                  <div>
+                    <del class="text-muted text-xs me-1">Rs. ${product.oldPrice.toLocaleString()}</del>
+                    <span class="fs-6 fw-black text-danger">Rs. ${product.price.toLocaleString()}</span>
+                  </div>
+                </div>
+                <button class="btn btn-maroon btn-sm rounded-3 w-100 font-bold" onclick="openProductModal('${product.id}')">
+                  <i class="bi bi-eye me-1"></i> Quick View
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- FILTER & SEARCH CONTROLS ---
+    function filterCategory(cat) {
+      currentCategory = cat;
+      document.querySelectorAll('.cat-pill').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.classList.add('btn-dark');
+          btn.classList.remove('btn-outline-secondary', 'text-dark');
+        } else {
+          btn.classList.remove('btn-dark');
+          btn.classList.add('btn-outline-secondary', 'text-dark');
+        }
+      });
+      renderProducts();
+      const bar = document.querySelector('.cat-pill');
+      if (bar && cat !== 'All') bar.closest('main').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function filterBrand(brand) {
+      currentBrand = brand;
+      document.querySelectorAll('.brand-tab-btn').forEach(btn => {
+        if (btn.dataset.brand === brand) {
+          btn.classList.add('btn-maroon');
+          btn.classList.remove('btn-outline-secondary', 'text-dark');
+        } else {
+          btn.classList.remove('btn-maroon');
+          btn.classList.add('btn-outline-secondary', 'text-dark');
+        }
+      });
+      renderProducts();
+    }
+
+    function handleSearch() {
+      const val = document.getElementById('searchInput').value;
+      currentSearch = val;
+      const clearBtn = document.getElementById('clearSearchBtn');
+      if (val) clearBtn.classList.remove('d-none');
+      else clearBtn.classList.add('d-none');
+      renderProducts();
+    }
+
+    function handleMobileSearch() {
+      currentSearch = document.getElementById('mobileSearchInput').value;
+      renderProducts();
+    }
+
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('d-none');
+      currentSearch = '';
+      renderProducts();
+    }
+
+    function handleSortChange() {
+      currentSort = document.getElementById('sortSelect').value;
+      renderProducts();
+    }
+
+    function resetFilters() {
+      currentCategory = 'All';
+      currentBrand = 'All';
+      currentSearch = '';
+      currentSort = 'featured';
+      document.getElementById('searchInput').value = '';
+      document.getElementById('mobileSearchInput').value = '';
+      filterCategory('All');
+      filterBrand('All');
+      renderProducts();
+    }
+
+    function toggleWishlist(btn) {
+      btn.classList.toggle('active');
+      btn.setAttribute('aria-pressed', btn.classList.contains('active'));
+      const icon = btn.querySelector('i');
+      if (btn.classList.contains('active')) {
+        icon.className = 'bi bi-heart-fill';
+      } else {
+        icon.className = 'bi bi-heart';
+      }
+    }
+
+    // --- MODAL DETAILS ---
+    function openProductModal(productId) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      document.getElementById('modalBrandCategory').textContent = `${product.brand.toUpperCase()} - ${CATEGORY_LABELS[product.category].toUpperCase()}`;
+      document.getElementById('modalBrand').textContent = product.brand;
+      document.getElementById('modalRating').innerHTML = `<i class="bi bi-star-fill text-warning me-1"></i> ${product.rating}`;
+      document.getElementById('modalTitle').textContent = product.name;
+      document.getElementById('modalColorway').textContent = `Color: ${product.colorway} | Category: ${CATEGORY_LABELS[product.category]}`;
+      document.getElementById('modalDescription').textContent = product.description;
+      const mImg = document.getElementById('modalImage');
+      mImg.src = product.image;
+      document.getElementById('modalOldPrice').textContent = `Rs. ${product.oldPrice.toLocaleString()}`;
+      document.getElementById('modalPrice').textContent = `Rs. ${product.price.toLocaleString()}`;
+
+      const discountPct = Math.round(((product.oldPrice - product.price) / product.oldPrice) * 100);
+      document.getElementById('modalSaveBadge').textContent = `${discountPct}% OFF`;
+
+      // Render Sizes
+      selectedModalSize = product.sizesPK[0];
+      const sizesContainer = document.getElementById('modalSizesContainer');
+      sizesContainer.innerHTML = product.sizesPK.map((sz, idx) => `
+        <button class="size-btn ${idx === 0 ? 'active' : ''}" onclick="selectModalSize(${sz}, this)">
+          ${sz}
+        </button>
+      `).join('');
+
+      // Add to Cart Button Click
+      const addBtn = document.getElementById('modalAddToCartBtn');
+      addBtn.onclick = () => {
+        addToCart(product.id, selectedModalSize);
+        const modalEl = document.getElementById('productModal');
+        const modalInstance = bootstrap.Modal.getInstance(modalEl);
+        if (modalInstance) modalInstance.hide();
+      };
+
+      // WhatsApp Button
+      const waBtn = document.getElementById('modalWhatsAppBtn');
+      waBtn.onclick = () => {
+        const text = encodeURIComponent(`Hi Kicks Vault PK! I want to order ${product.name} (Size ${selectedModalSize}) for Rs. ${product.price.toLocaleString()}`);
+        window.open(`https://wa.me/923001234567?text=${text}`, '_blank');
+      };
+
+      const productModal = new bootstrap.Modal(document.getElementById('productModal'));
+      productModal.show();
+    }
+
+    function selectModalSize(size, btn) {
+      selectedModalSize = size;
+      document.querySelectorAll('#modalSizesContainer .size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+
+    // --- CART MANAGEMENT ---
+    function addToCart(productId, sizePK) {
+      const product = PRODUCTS.find(p => p.id === productId);
+      if (!product) return;
+
+      const existingIndex = cart.findIndex(item => item.product.id === productId && item.sizePK === sizePK);
+      if (existingIndex > -1) {
+        cart[existingIndex].quantity += 1;
+      } else {
+        cart.push({ product, sizePK, quantity: 1 });
+      }
+
+      updateCartUI();
+
+      // Show Cart Offcanvas
+      const cartEl = document.getElementById('cartOffcanvas');
+      const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(cartEl);
+      bsOffcanvas.show();
+    }
+
+    function updateQuantity(index, delta) {
+      cart[index].quantity += delta;
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalItems = cart.reduce((acc, i) => acc + i.quantity, 0);
+      cartCountBadge.textContent = totalItems;
+      if (totalItems > 0) cartCountBadge.classList.remove('d-none');
+      else cartCountBadge.classList.add('d-none');
+
+      if (cart.length === 0) {
+        cartItemsContainer.innerHTML = '';
+        cartEmptyState.classList.remove('d-none');
+        cartSummaryFooter.classList.add('d-none');
+        return;
+      }
+
+      cartEmptyState.classList.add('d-none');
+      cartSummaryFooter.classList.remove('d-none');
+
+      cartItemsContainer.innerHTML = cart.map((item, index) => `
+        <div class="d-flex align-items-center gap-3 p-2 bg-light border rounded-3">
+          <img src="${item.product.image}" onerror="this.onerror=null;this.src='images/placeholder.jpg'" alt="${item.product.name}" class="rounded-3 object-fit-cover" style="width: 65px; height: 65px;">
+          <div class="flex-grow-1 min-w-0">
+            <h6 class="fw-bold text-dark text-truncate mb-0" style="font-size: 0.85rem;">${item.product.name}</h6>
+            <span class="text-muted text-xs d-block mb-1">Size: <strong class="text-danger">${item.sizePK}</strong></span>
+            <span class="fw-black text-dark text-xs">Rs. ${item.product.price.toLocaleString()}</span>
+          </div>
+          <div class="d-flex align-items-center gap-1 border rounded bg-white p-1">
+            <button class="btn btn-sm btn-link p-0 text-dark" onclick="updateQuantity(${index}, -1)"><i class="bi bi-dash"></i></button>
+            <span class="text-xs font-bold px-1">${item.quantity}</span>
+            <button class="btn btn-sm btn-link p-0 text-dark" onclick="updateQuantity(${index}, 1)"><i class="bi bi-plus"></i></button>
+          </div>
+        </div>
+      `).join('');
+
+      calculateCartTotals();
+    }
+
+    function calculateCartTotals() {
+      const subtotal = cart.reduce((acc, i) => acc + (i.product.price * i.quantity), 0);
+      let shipping = 250;
+      let codFee = 99;
+
+      // Free shipping in Hyderabad for orders > 5,000 PKR
+      if (isHyderabad && subtotal >= 5000) {
+        shipping = 0;
+      }
+
+      let discount = 0;
+      if (appliedPromo) {
+        discount = Math.round(subtotal * 0.10);
+        document.getElementById('discountRow').classList.remove('d-none');
+        document.getElementById('cartDiscount').textContent = `-Rs. ${discount.toLocaleString()}`;
+      } else {
+        document.getElementById('discountRow').classList.add('d-none');
+      }
+
+      const total = subtotal + shipping + codFee - discount;
+
+      document.getElementById('cartSubtotal').textContent = `Rs. ${subtotal.toLocaleString()}`;
+      document.getElementById('cartShipping').textContent = shipping === 0 ? 'FREE (Hyderabad Promo)' : `Rs. ${shipping}`;
+      document.getElementById('cartCodFee').textContent = `Rs. ${codFee}`;
+      document.getElementById('cartTotal').textContent = `Rs. ${total.toLocaleString()}`;
+    }
+
+    function applyPromo() {
+      const code = document.getElementById('promoCodeInput').value.trim().toUpperCase();
+      if (code === 'EID2026' || code === 'KICKS10') {
+        appliedPromo = true;
+        alert('Promo code applied! 10% Eid discount added.');
+        calculateCartTotals();
+      } else {
+        alert('Invalid promo code. Try EID2026.');
+      }
+    }
+
+    // --- CHECKOUT & PAYMENT ---
+    function openCheckoutModal() {
+      const cartOffcanvasEl = document.getElementById('cartOffcanvas');
+      const bsOffcanvas = bootstrap.Offcanvas.getInstance(cartOffcanvasEl);
+      if (bsOffcanvas) bsOffcanvas.hide();
+
+      const checkoutModal = new bootstrap.Modal(document.getElementById('checkoutModal'));
+      checkoutModal.show();
+    }
+
+    function togglePaymentView(method) {
+      const codNotice = document.getElementById('codNoticeSection');
+      const walletSection = document.getElementById('mobileWalletSection');
+      const walletTitle = document.getElementById('walletTitle');
+
+      if (method === 'cod') {
+        codNotice.classList.remove('d-none');
+        walletSection.classList.add('d-none');
+      } else if (method === 'jazzcash' || method === 'easypaisa') {
+        codNotice.classList.add('d-none');
+        walletSection.classList.remove('d-none');
+        walletTitle.textContent = method === 'jazzcash' ? 'JazzCash Account Payment' : 'Easypaisa Wallet Payment';
+      } else {
+        codNotice.classList.add('d-none');
+        walletSection.classList.remove('d-none');
+        walletTitle.textContent = 'Direct Bank Transfer (IBAN)';
+      }
+    }
+
+    function handleCityChange() {
+      const city = document.getElementById('custCity').value;
+      isHyderabad = (city === 'Hyderabad');
+      calculateCartTotals();
+    }
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('custName').value;
+      const city = document.getElementById('custCity').value;
+
+      const subtotal = cart.reduce((acc, i) => acc + (i.product.price * i.quantity), 0);
+      let shipping = (city === 'Hyderabad' && subtotal >= 5000) ? 0 : 250;
+      let codFee = 99;
+      let discount = appliedPromo ? Math.round(subtotal * 0.10) : 0;
+      const grandTotal = subtotal + shipping + codFee - discount;
+
+      // Populate Receipt
+      document.getElementById('receiptId').textContent = `PK-${Math.floor(100000 + Math.random() * 900000)}`;
+      document.getElementById('receiptName').textContent = name;
+      document.getElementById('receiptCity').textContent = city;
+      document.getElementById('receiptTotal').textContent = `Rs. ${grandTotal.toLocaleString()}`;
+
+      document.getElementById('receiptItemsList').innerHTML = cart.map(i => `
+        <div class="d-flex justify-content-between text-muted">
+          <span>${i.quantity}x ${i.product.name} (Size ${i.sizePK})</span>
+          <span>Rs. ${(i.product.price * i.quantity).toLocaleString()}</span>
+        </div>
+      `).join('');
+
+      // Hide Checkout Modal
+      const checkoutEl = document.getElementById('checkoutModal');
+      const bsCheckout = bootstrap.Modal.getInstance(checkoutEl);
+      if (bsCheckout) bsCheckout.hide();
+
+      const waLines = cart.map(i => `${i.quantity}x ${i.product.name} (Size ${i.sizePK})`).join('%0A');
+      const waText = `Hi Kicks Vault PK! I would like to place this order:%0A${waLines}%0AName: ${encodeURIComponent(name)}%0ACity: ${encodeURIComponent(city)}%0ATotal: Rs. ${grandTotal.toLocaleString()}`;
+      document.getElementById('receiptWhatsAppBtn').href = `https://wa.me/923001234567?text=${waText}`;
+
+      // Show Receipt Modal
+      const receiptModal = new bootstrap.Modal(document.getElementById('receiptModal'));
+      receiptModal.show();
+
+      // Clear Cart
+      cart = [];
+      appliedPromo = false;
+      updateCartUI();
+    }
+
+    // Initial load
+    window.onload = function() {
+      renderProducts();
+    };
+  </script>
 </body>
 </html>
